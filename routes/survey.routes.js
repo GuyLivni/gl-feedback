@@ -10,6 +10,13 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Survey = mongoose.model('surveys');
 
 module.exports = app => {
+  app.get('/api/surveys', requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id })
+      .select({ recipients: false });
+
+    res.send(surveys);
+  });
+
   app.post('/api/surveys/webhooks', (req, res) => {
     // parse path, remove undefined, keep unique only, update db
     const p = new Path('/api/surveys/:surveyId/:choice');
