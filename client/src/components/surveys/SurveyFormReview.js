@@ -2,7 +2,8 @@ import _              from 'lodash';
 import React          from 'react';
 import { connect}     from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {List, Button} from 'semantic-ui-react';
+import {List, Button,
+        Header, Icon} from 'semantic-ui-react';
 import * as actions   from '../../actions';
 import formFields     from './formFields';
 
@@ -20,7 +21,15 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 
   return (
     <div>
-      <h5>Please confirm your entries</h5>
+      <Header as='h3'>
+        <Icon name='list' />
+        <Header.Content>
+          Survey Content
+          <Header.Subheader>
+            Please confirm your entries
+          </Header.Subheader>
+        </Header.Content>
+      </Header>
       <List>{fieldsList}</List>
       <Button.Group>
         <Button content="Back to editing" onClick={onCancel} negative />
