@@ -1,12 +1,8 @@
 import React from 'react';
+import Login from './Login';
 
 const Landing = () => {
-  return (
-    <div style={{textAlign: 'center'}}>
-      <h1>Feedback!</h1>
-      Collect feedback from your users
-    </div>
-  );
+  return <Login/>;
 };
 
 export default Landing;

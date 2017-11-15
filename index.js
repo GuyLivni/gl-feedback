@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
+const fs = require("fs");
 require('./models/User');
 require('./models/Survey');
 require('./services/passport');
@@ -22,9 +23,12 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/auth.routes')(app);
-require('./routes/billing.routes')(app);
-require('./routes/survey.routes')(app);
+fs
+  .readdirSync(`${__dirname}/routes`)
+  .filter(file => (file.indexOf(".") !== 0))
+  .forEach((file) => {
+    require(__dirname + `/routes/${file}`)(app); // eslint-disable-line
+  });
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

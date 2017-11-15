@@ -1,0 +1,27 @@
+.login-container {
+    width: 400px;
+    margin: 150px auto;
+    padding: 2rem;
+    background: #fff;
+    border: 1px solid #d9e3ed;
+    border-radius: 5px;
+}
+
+.login-btns {
+    list-style: none;
+    padding: 0;
+}
+
+.login-header {
+    margin-bottom: 30px !important;
+    font-weight: 500 !important;
+    text-align: center;
+}
+
+.social {
+    margin-bottom: 10px;
+}
+
+.social a{
+    width: 100%;
+}
