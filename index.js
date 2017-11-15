@@ -27,7 +27,7 @@ fs
   .readdirSync(`${__dirname}/routes`)
   .filter(file => (file.indexOf(".") !== 0))
   .forEach((file) => {
-    require(__dirname + `/routes/${file}`)(app); // eslint-disable-line
+    require(__dirname + `/routes/${file}`)(app);
   });
 
 if (process.env.NODE_ENV === 'production') {

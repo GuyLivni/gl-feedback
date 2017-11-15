@@ -3,6 +3,8 @@ module.exports = {
   googleClientSecret: 'rzfQFZ2N4deOq2DS20KIxWnQ',
   githubClientID: '7a6defae74e2e79786b8',
   githubClientSecret: '0fc926ace74fb12ce2b7fdfd0e5d13f3df5c91e4',
+  facebookClientID: '2029353934007269',
+  facebookClientSecret: 'b58780350823c8ed224dffd8d37c1e8e',
   mongoURI: 'mongodb://guylivni:nanana232@ds149954.mlab.com:49954/gl-feedback',
   cookieKey: 'lkmzxcaksdnvlkjasdnqlsaldlknvlnasdnlaksndlkma',
   stripePublishableKey: 'pk_test_F8i2CEKIMcw0SZmVddtiHEui',
