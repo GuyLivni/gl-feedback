@@ -20,8 +20,12 @@
     width: auto;
 }
 
-.header-item.logo {
+.logo-container {
     margin-left: 40px;
+}
+
+.logo {
+    width: 10%;
 }
 
 .header-item.header {

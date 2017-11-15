@@ -15,7 +15,7 @@ module.exports = function (User) {
         return done(null, existingUser);
       }
 
-      const user = await new User({facebookId: profile.id}).save();
+      const user = await new User({facebookId: profile.id, name: profile.displayName}).save();
       done(null, user);
     })
 };

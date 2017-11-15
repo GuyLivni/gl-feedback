@@ -7,11 +7,6 @@
     border-radius: 5px;
 }
 
-.login-btns {
-    list-style: none;
-    padding: 0;
-}
-
 .login-header {
     margin-bottom: 30px !important;
     font-weight: 500 !important;

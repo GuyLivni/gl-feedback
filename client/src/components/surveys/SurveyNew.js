@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm }        from 'redux-form';
+import {Container}          from 'semantic-ui-react';
 import SurveyForm           from './SurveyForm';
 import SurveyFormReview     from './SurveyFormReview';
+import "./SurveyNew.css";
 
 class SurveyNew extends Component {
   state = { showFormReview: false };
@@ -21,9 +23,9 @@ class SurveyNew extends Component {
 
   render() {
     return (
-      <div>
+      <Container className="form-container">
         {this.renderContent()}
-      </div>
+      </Container>
     );
   }
 }

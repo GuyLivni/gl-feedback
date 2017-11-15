@@ -23,7 +23,7 @@ const renderButtons = () => (
 const Login = () => (
   <div className="login-container">
     <h2 className="login-header ui header">Login to Feedback</h2>
-    <ul className="login-btns">{renderButtons()}</ul>
+    {renderButtons()}
   </div>
 );
 

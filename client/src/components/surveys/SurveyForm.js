@@ -1,43 +1,42 @@
 import _                    from 'lodash';
-import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { Link }             from 'react-router-dom';
+import React, {Component}   from 'react';
+import {reduxForm, Field}   from 'redux-form';
+import {Link}               from 'react-router-dom';
+import {Form, Button}       from 'semantic-ui-react';
 import SurveyField          from './SurveyField';
 import validateEmails       from '../../utils/validateEmails';
 import formFields           from './formFields';
 
 class SurveyForm extends Component {
   renderFields() {
-    return _.map(formFields, ({ label, name }) =>
+    return _.map(formFields, ({label, name}) =>
       <Field
         key={name}
         component={SurveyField}
         type="text"
         label={label}
-        name={name} />
+        name={name}/>
     )
   }
 
   renderButtons() {
-    return [
-      <Link key="1" to="/surveys" className="red btn-flat white-text">
-        Cancel
-      </Link>,
-      <button key="2" type="submit" className="teal btn-flat right white-text">
-        Next
-        <i className="material-icons right">done</i>
-      </button>
-    ]
+    return (
+      <Button.Group>
+        <Button negative>
+          <Link style={{color: "#fff"}} to="/surveys">Cancel</Link>
+        </Button>
+        <Button.Or />
+        <Form.Button primary content="Done" />
+      </Button.Group>
+    )
   }
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-          {this.renderFields()}
-          {this.renderButtons()}
-        </form>
-      </div>
+      <Form error onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
+        {this.renderFields()}
+        {this.renderButtons()}
+      </Form>
     );
   }
 }
@@ -47,7 +46,7 @@ function validate(values) {
 
   errors.recipients = validateEmails(values.recipients || '');
 
-  _.each(formFields, ({ name }) => {
+  _.each(formFields, ({name}) => {
     if (!values[name]) {
       errors[name] = `You must provide a ${name} value`;
     }

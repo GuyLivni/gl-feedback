@@ -1,3 +1,7 @@
 html, body {
     background: #f9fafb;
 }
+
+#root {
+    height: 100%;
+}

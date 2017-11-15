@@ -2,38 +2,31 @@ import _              from 'lodash';
 import React          from 'react';
 import { connect}     from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import {List, Button} from 'semantic-ui-react';
 import * as actions   from '../../actions';
 import formFields     from './formFields';
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   const fieldsList = _.map(formFields, ({ name, label }) => {
     return (
-      <div key={name}>
-        <label>{label}</label>
-        <div>
-          {formValues[name]}
-        </div>
-      </div>
+      <List.Item key={name}>
+        <List.Content>
+          <List.Header>{label}</List.Header>
+          <List.Description>{formValues[name]}</List.Description>
+        </List.Content>
+      </List.Item>
     );
   });
 
   return (
     <div>
       <h5>Please confirm your entries</h5>
-      {fieldsList}
-      <button
-        className="yellow darken-3 white-text btn-flat"
-        onClick={onCancel}
-      >
-        Back
-      </button>
-      <button
-        className="green btn-flat right white-text"
-        onClick={() => submitSurvey(formValues, history)}
-      >
-        Send Survey
-        <i className="material-icons right">email</i>
-      </button>
+      <List>{fieldsList}</List>
+      <Button.Group>
+        <Button content="Back to editing" onClick={onCancel} negative />
+        <Button.Or />
+        <Button primary content="Send Survey" onClick={() => submitSurvey(formValues, history)} />
+      </Button.Group>
     </div>
   );
 };
@@ -44,4 +37,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(withRouter(SurveyFormReview));
+export default withRouter(connect(mapStateToProps, actions)(SurveyFormReview));

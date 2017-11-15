@@ -1,8 +1,14 @@
 import React from 'react';
-import Login from './Login';
+import "./Landing.css";
 
 const Landing = () => {
-  return <Login/>;
+  return (
+    <div className="ui container">
+      <div className="landing">
+        <h1>Collect Feedback From Your Users With Confidence</h1>
+      </div>
+    </div>
+  );
 };
 
 export default Landing;

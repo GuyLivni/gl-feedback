@@ -1,13 +1,15 @@
 import React from 'react';
+import {Form, Message} from 'semantic-ui-react';
 
-export default ({ input, label, meta: { error, touched} }) => {
+export default ({input, label, meta: {error, touched}}) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input {...input} style={{marginBottom: '5px'}} />
-      <div className="red-text" style={{marginBottom: '20px'}}>
-        { touched && error }
-      </div>
-    </div>
+    <Form.Field>
+      <Form.Input label={label} {...input} />
+      { touched && <Message
+        error
+        header={error && 'Error'}
+        content={error}
+      /> }
+    </Form.Field>
   );
 };

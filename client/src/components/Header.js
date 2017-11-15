@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
-import {Link}             from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {connect}          from 'react-redux';
 import Stripe             from './Stripe';
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Icon } from 'semantic-ui-react'
+import logo from '../assets/images/logo.png'
 import "./Header.css";
 
 class Header extends Component {
-
-  menuOptions() {
+  menuOptions(auth) {
     return [
-      { key: 'signedin', text: `Signed in as: John`, disabled: true, value: 1 },
+      { key: 'signedin', text: `Signed in as: ${auth.name}`, disabled: true, value: 1 },
       { key: 'stripe', text: <Stripe/>, value: 2 },
-      { key: 'logout', text: <a href="/api/logout">Logout</a>, value: 3 }
+      { key: 'logout', text: <a href="/api/logout"><Icon name="sign out"/> Logout</a>, value: 3 }
     ]
   }
 
@@ -20,15 +20,17 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return;
+        return this.props.history.location.pathname !== '/login' && (
+          <Link className="circular ui icon button" to="/login">
+            <Icon name="sign in"/> Login
+          </Link>
+        );
       default:
         return (
           <Dropdown
             simple
-            trigger={
-              <span>Hello, John. <br/>Your credits: {auth.credits}</span>
-            }
-            options={this.menuOptions()}
+            trigger={<span>Hello, {auth.name} <br/>Your credits: {auth.credits}</span>}
+            options={this.menuOptions(auth)}
           />
         )
     }
@@ -39,11 +41,13 @@ class Header extends Component {
     return (
       <nav className="header-container">
         <div className="header-content">
-          <div className="header-item logo">logo</div>
-          <Link to={auth ? '/surveys' : '/'} className="header-item header">
-            <h2>Feedback</h2>
+          <Link className="header-item logo-container" to={auth ? '/surveys' : '/'}>
+            <img className="logo" alt="logo" src={logo}/>
           </Link>
-          <ul className="header-item profile">{this.renderContent(auth)}</ul>
+          <div className="header-item header">
+            <h2>Feedback</h2>
+          </div>
+          <div className="header-item profile">{this.renderContent(auth)}</div>
         </div>
       </nav>
     );
@@ -56,4 +60,4 @@ function mapStateToProps({auth}) {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
