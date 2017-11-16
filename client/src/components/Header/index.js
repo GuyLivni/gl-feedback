@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {connect}          from 'react-redux';
-import Stripe             from './Stripe';
+import Stripe             from '../Stripe';
 import { Dropdown, Icon } from 'semantic-ui-react'
-import logo from '../assets/images/logo.png'
+import logo from '../../assets/images/logo.png'
 import "./Header.css";
 
 class Header extends Component {

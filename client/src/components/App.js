@@ -7,7 +7,7 @@ import Header                            from './Header';
 import Landing                           from './Landing';
 import Login                             from './Login';
 import Dashboard                         from './Dashboard';
-import SurveyNew                         from './surveys/SurveyNew';
+import SurveyNew                         from './Surveys/SurveyNew';
 
 class App extends Component {
   componentDidMount() {

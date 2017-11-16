@@ -19,25 +19,31 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
     );
   });
 
-  return (
-    <div>
-      <Header as='h3'>
-        <Icon name='list' />
-        <Header.Content>
-          Survey Content
-          <Header.Subheader>
-            Please confirm your entries
-          </Header.Subheader>
-        </Header.Content>
-      </Header>
-      <List>{fieldsList}</List>
-      <Button.Group>
-        <Button content="Back to editing" onClick={onCancel} negative />
-        <Button.Or />
-        <Button primary content="Send Survey" onClick={() => submitSurvey(formValues, history)} />
-      </Button.Group>
-    </div>
+  const renderHeader = () => (
+    <Header as='h3' key="header">
+      <Icon name='list' />
+      <Header.Content>
+        Survey Content
+        <Header.Subheader>
+          Please confirm your entries
+        </Header.Subheader>
+      </Header.Content>
+    </Header>
   );
+
+  const renderButtons = () => (
+    <Button.Group key="buttons">
+      <Button content="Back to editing" onClick={onCancel} negative />
+      <Button.Or />
+      <Button primary content="Send Survey" onClick={() => submitSurvey(formValues, history)} />
+    </Button.Group>
+  );
+
+  return [
+    renderHeader(),
+    <List key="list" animated>{fieldsList}</List>,
+    renderButtons()
+  ];
 };
 
 function mapStateToProps(state) {

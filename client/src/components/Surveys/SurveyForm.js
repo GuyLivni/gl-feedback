@@ -9,12 +9,13 @@ import formFields           from './formFields';
 
 class SurveyForm extends Component {
   renderFields() {
-    return _.map(formFields, ({label, name}) =>
+    return _.map(formFields, ({label, name, placeholder}) =>
       <Field
         key={name}
         component={SurveyField}
         type="text"
         label={label}
+        placeholder={placeholder}
         name={name}/>
     )
   }
@@ -46,9 +47,9 @@ function validate(values) {
 
   errors.recipients = validateEmails(values.recipients || '');
 
-  _.each(formFields, ({name}) => {
+  _.each(formFields, ({name, errorMessage}) => {
     if (!values[name]) {
-      errors[name] = `You must provide a ${name} value`;
+      errors[name] = errorMessage;
     }
   });
 
