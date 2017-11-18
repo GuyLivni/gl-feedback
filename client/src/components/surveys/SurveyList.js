@@ -1,86 +1,45 @@
-import React, {Component}      from 'react';
-import {connect}               from 'react-redux';
-import {Card, Header, Icon, Statistic, Button, Modal}            from 'semantic-ui-react';
-import {fetchSurveys, deleteSurvey}          from '../../actions';
-import "./SurveyList.css"
+import React, {Component}                   from 'react';
+import {connect}                            from 'react-redux';
+import {Card, Modal, Header, Button}        from 'semantic-ui-react';
+import {fetchSurveys, deleteSurvey}         from '../../actions';
+import SurveyItem                           from './surveyItem';
 
 class SurveyList extends Component {
-  state = { modalOpen: false };
-
   componentDidMount() {
     this.props.fetchSurveys();
   }
 
-  handleOpen = () => this.setState({ modalOpen: true });
-
-  handleClose = () => this.setState({ modalOpen: false });
-
-  handleDelete = (survey) => {
-    this.props.deleteSurvey(survey._id);
-    this.handleClose();
+  handleDelete = (id) => {
+    this.props.deleteSurvey(id);
   };
 
-  renderDeleteModal(survey) {
+  renderDeleteModal = (id) => {
     return (
       <Modal
+        trigger={<Button compact floated="right" content="delete" />}
         dimmer="blurring"
         size="tiny"
-        open={this.state.modalOpen}
-        onClose={this.handleClose}
-        trigger={<Button compact floated="right" content="delete" onClick={this.handleOpen} />}
-      >
-        <Header icon='archive' content='Delete Survey' />
-        <Modal.Content>
-          <p>Are you sure you want to delete this survey?</p>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button color='red' onClick={this.handleClose}>
-            <Icon name='remove' /> No
-          </Button>
-          <Button color='green' onClick={() => this.handleDelete(survey)}>
-            <Icon name='checkmark' /> Yes
-          </Button>
-        </Modal.Actions>
-      </Modal>
+        header={<Header icon="remove circle outline" content="Delete Survey" />}
+        content="Are you sure you want to delete this survey?"
+        actions={[
+          { key: 'No', content: 'No', negative: true },
+          { key: 'Yes', content: 'Yes', positive: true, onClick: () => this.handleDelete(id) },
+        ]}
+      />
     )
-  }
+  };
 
   renderSurveys() {
     return this.props.surveys.reverse().map(survey => {
-      return (
-        <Card key={survey._id}>
-          <Card.Content>
-            <Card.Header>
-              {survey.title}
-            </Card.Header>
-            <Card.Meta>
-              {survey.subject}
-            </Card.Meta>
-            <Card.Description>
-              {survey.body}
-            </Card.Description>
-          </Card.Content>
-          <Card.Content>
-            <Statistic size="mini" horizontal>
-              <Statistic.Value>
-                <Icon color='green' name='check circle outline'/>
-                {survey.yes}
-              </Statistic.Value>
-            </Statistic>
-            <Statistic size="mini" horizontal>
-              <Statistic.Value>
-                <Icon color='red' name='remove circle outline'/>
-                {survey.no}
-              </Statistic.Value>
-            </Statistic>
-          </Card.Content>
-          <Card.Content extra>
-            Sent On: {new Date(survey.dateSent).toLocaleDateString()}
-            {this.renderDeleteModal(survey)}
-          </Card.Content>
-        </Card>
-      )
-    });
+        const surveyId = survey._id;
+        return (
+          <SurveyItem
+            key={surveyId}
+            {...survey}
+            renderModal={this.renderDeleteModal(surveyId)}/>
+        )
+      }
+    );
   }
 
   render() {
