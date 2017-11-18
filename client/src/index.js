@@ -7,8 +7,9 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
+import api from './middlewares/api';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk, api));
 
 render(
   <Provider store={store}>

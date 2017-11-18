@@ -1,8 +1,8 @@
-const GithubStrategy = require('passport-facebook').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const keys = require('../../config/keys');
 
 module.exports = function (User) {
-  return new GithubStrategy({
+  return new FacebookStrategy({
       clientID: keys.facebookClientID,
       clientSecret: keys.facebookClientSecret,
       callbackURL: '/auth/facebook/callback',

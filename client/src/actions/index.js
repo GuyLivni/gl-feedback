@@ -1,37 +1,64 @@
-import axios from 'axios';
-import {FETCH_USER, FETCH_SURVEYS} from './types';
+import {SET_USER, SET_SURVEYS, DELETE_SURVEY, API} from './types';
 
-export const fetchUser = () => async dispatch => {
-  const { data } = await axios.get('/api/current_user');
-  dispatch({
-    type: FETCH_USER,
-    payload: data
-  })
-};
+export const fetchUser = () => ({
+  type: API,
+  payload: {
+    url: '/api/current_user',
+    method: 'get',
+    success: payload => ({
+      type: SET_USER,
+      payload
+    })
+  }
+});
 
-export const handleToken = token => async dispatch => {
-  const { data } = await axios.post('/api/stripe', token);
-  dispatch({
-    type: FETCH_USER,
-    payload: data
-  })
-};
+export const handleToken = token => ({
+  type: API,
+  payload: {
+    url: '/api/stripe',
+    method: 'post',
+    body: token,
+    success: payload => ({
+      type: SET_USER,
+      payload
+    })
+  }
+});
 
-export const submitSurvey = (values, history) => async dispatch => {
-  const { data } = await axios.post('/api/surveys', values);
+export const submitSurvey = values => ({
+  type: API,
+  payload: {
+    url: '/api/surveys',
+    method: 'post',
+    body: values,
+    success: payload => ({
+      type: SET_USER,
+      payload
+    })
+  }
+});
 
-  history.push('/surveys');
-  dispatch({
-    type: FETCH_USER,
-    payload: data
-  })
-};
+export const deleteSurvey = id => ({
+  type: API,
+  payload: {
+    url: '/api/surveys',
+    method: 'delete',
+    params: { id },
+    success: payload => ({
+      type: DELETE_SURVEY,
+      payload
+    })
+  }
+});
 
-export const fetchSurveys = () => async dispatch => {
-  const { data } = await axios.get('/api/surveys');
-
-  dispatch({
-    type: FETCH_SURVEYS,
-    payload: data
-  })
-};
+export const fetchSurveys = () => ({
+  type: API,
+  payload: {
+    url: '/api/surveys',
+    method: 'get',
+    success: payload => ({
+      type: SET_SURVEYS,
+      payload
+    })
+  }
+});

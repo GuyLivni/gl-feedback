@@ -33,9 +33,16 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 
   const renderButtons = () => (
     <Button.Group key="buttons">
-      <Button content="Back to editing" onClick={onCancel} negative />
+      <Button content="Back to editing" onClick={onCancel} negative/>
       <Button.Or />
-      <Button primary content="Send Survey" onClick={() => submitSurvey(formValues, history)} />
+      <Button
+        primary
+        content="Send Survey"
+        onClick={() => {
+          submitSurvey(formValues);
+          history.push('/surveys');
+        }
+        }/>
     </Button.Group>
   );
 

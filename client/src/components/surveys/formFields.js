@@ -3,6 +3,6 @@ export default [
   { label: 'Subject Line',   name: 'subject', errorMessage: 'You must provide a subject'},
   { label: 'Email Body',     name: 'body', errorMessage: 'You must provide a body'},
   { label: 'Recipient List', name: 'recipients', errorMessage: 'You must provide correct email addresses',
-    placeholder: 'john@gmail.com, guy@yahoo.com'
+    placeholder: 'Comma separated emails: john@gmail.com, guy@yahoo.com'
   }
 ];

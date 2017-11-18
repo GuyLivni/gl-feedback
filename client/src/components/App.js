@@ -3,11 +3,11 @@ import {BrowserRouter as Router, Route}  from 'react-router-dom';
 import {connect}                         from 'react-redux';
 import {Container}                       from 'semantic-ui-react';
 import * as actions                      from '../actions'
-import Header                            from './Header';
-import Landing                           from './Landing';
-import Login                             from './Login';
-import Dashboard                         from './Dashboard';
-import SurveyNew                         from './Surveys/SurveyNew';
+import Header                            from './header';
+import Landing                           from './landing';
+import Login                             from './login';
+import Dashboard                         from './dashboard';
+import SurveyNew                         from './surveys/SurveyNew';
 
 class App extends Component {
   componentDidMount() {

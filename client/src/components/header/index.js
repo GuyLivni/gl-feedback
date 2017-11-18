@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {connect}          from 'react-redux';
-import Stripe             from '../Stripe';
+import Stripe             from '../stripe';
 import { Dropdown, Icon } from 'semantic-ui-react'
 import logo from '../../assets/images/logo.png'
 import "./Header.css";
