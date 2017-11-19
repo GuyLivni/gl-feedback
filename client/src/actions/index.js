@@ -1,4 +1,4 @@
-import {SET_USER, SET_SURVEYS, DELETE_SURVEY, API} from './types';
+import {SET_USER, LOGOUT_USER, SET_SURVEYS, DELETE_SURVEY, API} from './types';
 
 export const fetchUser = () => ({
   type: API,
@@ -7,6 +7,18 @@ export const fetchUser = () => ({
     method: 'get',
     success: payload => ({
       type: SET_USER,
+      payload
+    })
+  }
+});
+
+export const logoutUser = () => ({
+  type: API,
+  payload: {
+    url: '/api/logout',
+    method: 'get',
+    success: payload => ({
+      type: LOGOUT_USER,
       payload
     })
   }

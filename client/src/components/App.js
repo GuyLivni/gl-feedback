@@ -1,32 +1,27 @@
-import React, {Component}                from 'react';
-import {BrowserRouter as Router, Route}  from 'react-router-dom';
-import {connect}                         from 'react-redux';
-import {Container}                       from 'semantic-ui-react';
-import * as actions                      from '../actions'
-import Header                            from './header';
-import Landing                           from './landing';
-import Login                             from './login';
-import Dashboard                         from './dashboard';
-import SurveyNew                         from './surveys/SurveyNew';
+import React, {Component}     from 'react';
+import {Route, withRouter}    from 'react-router-dom';
+import {connect}              from 'react-redux';
+import {Container}            from 'semantic-ui-react';
+import * as actions           from '../actions';
+import routes                 from '../routes';
+import Header                 from './header';
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
   }
 
+  renderRoutes = () => routes
+    .map( route => <Route key={ route.path } { ...route } /> );
+
   render() {
     return (
-      <Router>
-        <Container fluid>
-          <Header/>
-          <Route exact path="/" component={Landing}/>
-          <Route exact path="/login" component={Login}/>
-          <Route exact path="/surveys" component={Dashboard}/>
-          <Route path="/surveys/new" component={SurveyNew}/>
-        </Container>
-      </Router>
+      <Container fluid>
+        <Header />
+        { this.renderRoutes() }
+      </Container>
     );
   }
 }
 
-export default connect(null, actions)(App);
+export default withRouter(connect(null, actions)(App));

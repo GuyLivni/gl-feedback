@@ -1,5 +1,7 @@
-import React from 'react';
+import React                from 'react';
 import {Button, Icon, Grid} from 'semantic-ui-react';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import './Login.css';
 
 const Buttons = [
@@ -20,11 +22,15 @@ const renderButtons = () => (
   </Grid>
 );
 
-const Login = () => (
+const Login = ({isAuthenticated}) => (
   <div className="login-container">
     <h2 className="login-header ui header">Login to Feedback</h2>
-    {renderButtons()}
+    {isAuthenticated ? <Redirect to="/surveys" /> : renderButtons()}
   </div>
 );
 
-export default Login;
+const mapStateToProps = ({auth}) => ({
+  isAuthenticated: auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Login);

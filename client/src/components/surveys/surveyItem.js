@@ -1,7 +1,7 @@
-import React from 'react';
+import React                   from 'react';
 import {Card, Icon, Statistic} from 'semantic-ui-react';
 
-const SurveyItem = ({ id, title, subject, body, yes, no, dateSent, renderModal }) => {
+const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal }) => {
   return (
     <Card>
       <Card.Content>
