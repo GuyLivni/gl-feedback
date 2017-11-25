@@ -1,14 +1,21 @@
 .login-container {
-    width: 400px;
-    margin: 150px auto;
     padding: 2rem;
     background: #fff;
     border: 1px solid #d9e3ed;
     border-radius: 5px;
+    box-shadow: 0 1px 5px 0 rgba(34,36,38,.15);
 }
 
-.login-header {
-    margin-bottom: 30px !important;
-    font-weight: 500 !important;
-    text-align: center;
+.login-button {
+    width: 250px;
+    box-shadow: 0 1px 5px 0 rgba(34,36,38,.15);
+}
+
+.login-button-content {
+    text-align: left;
+}
+
+.login-button-text {
+    font-size: 16px;
+    vertical-align: middle;
 }

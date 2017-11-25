@@ -26,8 +26,8 @@ class Header extends Component {
     }
 
     return this.props.history.location.pathname !== '/login' && (
-        <Link className="circular ui icon button" to="/login">
-          <Icon name="sign in"/> Login
+        <Link className="ui icon button" to="/login">
+          <Icon name="sign in" /> Login
         </Link>
       )
   }

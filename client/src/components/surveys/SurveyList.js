@@ -17,9 +17,9 @@ class SurveyList extends Component {
     return (
       <Modal
         trigger={<Button compact floated="right" content="delete" />}
-        dimmer="blurring"
+        dimmer="inverted"
         size="tiny"
-        header={<Header icon="remove circle outline" content="Delete Survey" />}
+        header={<Header icon="archive" content="Delete Survey" />}
         content="Are you sure you want to delete this survey?"
         actions={[
           { key: 'No', content: 'No', negative: true },

@@ -7,11 +7,11 @@ const api = ({ dispatch, getState }) => next => async (action) => {
     return next(action);
   }
 
-  const { url, method, success, body, params } = action.payload;
+  const { url, method, success, body, params, extra } = action.payload;
 
   try {
     const { data } = await axios({method, url, data: body, params});
-    dispatch(success(data));
+    dispatch(success(data, extra));
   } catch (error) {
     console.log("Error occurred: ", error)
   }

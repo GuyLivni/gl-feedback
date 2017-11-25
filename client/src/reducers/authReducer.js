@@ -1,4 +1,4 @@
-import {SET_USER, LOGOUT_USER} from '../actions/types';
+import {USER_SIGNIN, SURVEY_ADD, USER_SIGNOUT} from '../actions/types';
 
 const initialState = {
   user: {},
@@ -7,13 +7,14 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case SET_USER:
+    case USER_SIGNIN:
+    case SURVEY_ADD:
       return Object.assign({}, state, {
         user: action.payload,
         isAuthenticated: !!action.payload._id || false
       });
 
-    case LOGOUT_USER:
+    case USER_SIGNOUT:
       return Object.assign({}, state, {
         user: null,
         isAuthenticated: false

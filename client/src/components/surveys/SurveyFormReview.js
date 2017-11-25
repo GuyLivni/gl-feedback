@@ -39,8 +39,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
         primary
         content="Send Survey"
         onClick={() => {
-          submitSurvey(formValues);
-          history.push('/surveys');
+          submitSurvey(formValues, history);
+          // history.push('/surveys');
         }
         }/>
     </Button.Group>

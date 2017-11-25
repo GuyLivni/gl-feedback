@@ -16,7 +16,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container fluid style={{ height: '100%' }}>
         <Header />
         { this.renderRoutes() }
       </Container>

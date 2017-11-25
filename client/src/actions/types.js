@@ -1,5 +1,6 @@
-export const SET_USER = 'SET_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
-export const SET_SURVEYS = 'SET_SURVEYS';
-export const DELETE_SURVEY = 'DELETE_SURVEY';
-export const API = 'API';
+export const API           = 'API';
+export const USER_SIGNIN   = 'USER_SIGNIN';
+export const USER_SIGNOUT  = 'USER_SIGNOUT';
+export const SURVEY_GET    = 'SURVEY_GET';
+export const SURVEY_REMOVE = 'SURVEY_REMOVE';
+export const SURVEY_ADD    = 'SURVEY_ADD';
