@@ -1,22 +1,15 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunkMiddleware                                   from 'redux-thunk';
-import apiMiddleware                                     from '../middlewares/apiMiddleware';
-import redirectMiddleware                                from '../middlewares/redirectMiddleware';
-import reducers                                          from '../reducers';
+import configureStoreDev    from "./store.dev";
+import configureStoreProd   from "./store.prod";
 
-export default function configureStore( initialState ) {
-  const rootReducer = combineReducers( reducers );
-  const middlewares = [thunkMiddleware, redirectMiddleware, apiMiddleware];
+export default function (initialState = {}) {
+  switch (process.env.NODE_ENV) {
+    case "production":
+      return configureStoreProd(initialState);
 
-  if (process.env.NODE_ENV === "development") {
-    const { logger } = require('redux-logger');
+    case "development":
+      return configureStoreDev(initialState);
 
-    middlewares.push(logger);
+    default:
+      return configureStoreProd(initialState);
   }
-
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(...middlewares)
-  );
 }
