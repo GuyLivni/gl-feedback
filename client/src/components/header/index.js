@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {connect}          from 'react-redux';
-import Stripe             from '../stripe';
-import * as actions       from '../../actions';
-import { Dropdown, Icon } from 'semantic-ui-react'
-import logo               from '../../assets/images/logo.png'
+import React, {Component}         from 'react';
+import {Link, withRouter}         from 'react-router-dom';
+import {connect}                  from 'react-redux';
+import Stripe                     from '../stripe';
+import * as actions               from '../../actions';
+import { Dropdown, Icon,
+         Header as HeaderS }      from 'semantic-ui-react';
+import logo                       from '../../assets/images/logo.png';
 import "./Header.css";
 
 class Header extends Component {
@@ -26,7 +27,7 @@ class Header extends Component {
     }
 
     return this.props.history.location.pathname !== '/login' && (
-        <Link className="ui icon button" to="/login">
+        <Link className="ui icon button basic" to="/login">
           <Icon name="sign in" /> Login
         </Link>
       )
@@ -41,7 +42,7 @@ class Header extends Component {
             <img className="logo" alt="logo" src={logo}/>
           </Link>
           <div className="header-item header">
-            <h2>Feedback</h2>
+            <HeaderS size="huge" content="Feedback" />
           </div>
           <div className="header-item profile">{this.renderContent(user, isAuthenticated)}</div>
         </div>

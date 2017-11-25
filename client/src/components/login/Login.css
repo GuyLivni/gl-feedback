@@ -1,14 +1,18 @@
 .login-container {
-    padding: 2rem;
+    height: 100%;
+}
+
+.login-content {
+    max-width: 600px;
     background: #fff;
     border: 1px solid #d9e3ed;
     border-radius: 5px;
-    box-shadow: 0 1px 5px 0 rgba(34,36,38,.15);
+    padding: 60px !important;
 }
 
 .login-button {
     width: 250px;
-    box-shadow: 0 1px 5px 0 rgba(34,36,38,.15);
+    margin-bottom: 15px !important;
 }
 
 .login-button-content {
