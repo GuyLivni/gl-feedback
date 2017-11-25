@@ -1,7 +1,7 @@
 import React                   from 'react';
 import {Card, Icon, Statistic} from 'semantic-ui-react';
 
-const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal }) => {
+const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal, from }) => {
   return (
     <Card>
       <Card.Content>
@@ -30,7 +30,8 @@ const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal }) =>
         </Statistic>
       </Card.Content>
       <Card.Content extra>
-        Sent On: {new Date(dateSent).toLocaleDateString()}
+        <Card.Meta>From: {from}</Card.Meta>
+        Sent on: {new Date(dateSent).toLocaleDateString()}
         {renderModal}
       </Card.Content>
     </Card>
