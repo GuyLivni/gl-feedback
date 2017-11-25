@@ -1,4 +1,4 @@
-import {USER_SIGNIN, SURVEY_ADD, USER_SIGNOUT} from '../actions/types';
+import {USER_FETCH, SURVEY_ADD, USER_SIGNOUT} from '../actions/types';
 
 const initialState = {
   user: {},
@@ -7,7 +7,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case USER_SIGNIN:
+    case USER_FETCH:
     case SURVEY_ADD:
       return Object.assign({}, state, {
         user: action.payload,

@@ -8,10 +8,11 @@ module.exports = (app) => {
     );
 
     app.get(`/auth/${medium}/callback`,
-      passport.authenticate(medium),
-      (req, res) => {
-        res.redirect('/surveys');
-      }
+      passport.authenticate(medium, {
+        successRedirect : '/surveys',
+        failureRedirect : '/login',
+        failureFlash : true
+      })
     );
   });
 

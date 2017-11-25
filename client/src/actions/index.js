@@ -1,7 +1,7 @@
 import * as types from './types';
 
 export const signinUser = (payload) => ({
-  type: types.USER_SIGNIN,
+  type: types.USER_FETCH,
   payload
 });
 
