@@ -1,17 +1,13 @@
 import React                      from 'react';
-import {Link}                     from 'react-router-dom';
-import {Container, Segment, Icon} from 'semantic-ui-react';
+import {Container}                from 'semantic-ui-react';
 import SurveyList                 from '../surveys/SurveyList';
+import SurveyMenu                 from '../surveys/surveyMenu';
 import "./Dashboard.css"
 
 const Dashboard = () => {
   return (
     <Container className="dashboard-container">
-      <Segment>
-        <Link to="/surveys/new">
-          <Icon name="wpforms"/>Create New Survey
-        </Link>
-      </Segment>
+      <SurveyMenu/>
       <SurveyList/>
     </Container>
   );

@@ -30,7 +30,7 @@ class SurveyList extends Component {
   };
 
   renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
+    return this.props.surveys.map(survey => {
         const surveyId = survey._id;
         return (
           <SurveyItem
@@ -47,8 +47,8 @@ class SurveyList extends Component {
   }
 }
 
-function mapStateToProps({surveys}) {
-  return {surveys}
-}
+const mapStateToProps = ({surveys}) => ({
+  surveys
+});
 
 export default connect(mapStateToProps, {fetchSurveys, deleteSurvey})(SurveyList);

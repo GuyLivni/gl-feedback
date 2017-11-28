@@ -16,11 +16,9 @@ export default function withAuthentication(WrappedComponent) {
     }
   }
 
-  const mapStateToProps = (state) => {
-    return {
-      isAuthenticated: state.auth.isAuthenticated,
-    }
-  };
+  const mapStateToProps = ({auth}) => ({
+    isAuthenticated: auth.isAuthenticated,
+  });
 
   return connect(mapStateToProps)(AuthenticatedComponent);
 }

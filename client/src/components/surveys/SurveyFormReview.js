@@ -53,10 +53,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   ];
 };
 
-function mapStateToProps(state) {
-  return {
-    formValues: state.form.surveyForm.values
-  };
-}
+const mapStateToProps = ({form}) => ({
+  formValues: form.surveyForm.values
+});
 
 export default withRouter(connect(mapStateToProps, actions)(SurveyFormReview));
