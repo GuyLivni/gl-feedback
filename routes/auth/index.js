@@ -1,4 +1,4 @@
-const passport = require('passport');
+const passport             = require('passport');
 const {socialRoutesParams} = require('../../services/passport');
 
 module.exports = (app) => {
