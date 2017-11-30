@@ -1,7 +1,13 @@
 import React                     from 'react';
 import {Link}                    from 'react-router-dom';
+import styled                    from 'styled-components';
 import {Segment, Icon, Dropdown} from 'semantic-ui-react';
-import './surveyMenu.css';
+
+const Menu = styled(Segment)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+`;
 
 const sortOptions = [
   { key: '1', value: 'title', text: 'Title' },
@@ -11,11 +17,11 @@ const sortOptions = [
 ];
 
 const SurveyMenu = () =>
-  <Segment className="survey-menu" color='blue'>
+  <Menu color='blue'>
     <Link to="/surveys/new">
       <Icon name="wpforms"/>Create New Survey
     </Link>
     <Dropdown selection placeholder='Sort by' options={sortOptions}/>
-  </Segment>;
+  </Menu>;
 
 export default SurveyMenu;

@@ -1,52 +1,39 @@
-import React, {Component}         from 'react';
-import {Link, withRouter}         from 'react-router-dom';
-import {connect}                  from 'react-redux';
-import Stripe                     from '../stripe';
-import * as actions               from '../../actions';
-import { Dropdown, Icon,
-         Header as HeaderS }      from 'semantic-ui-react';
-import logo                       from '../../assets/images/logo.png';
-import "./Header.css";
+import React, {Component}   from 'react';
+import {connect}            from 'react-redux';
+import styled               from 'styled-components';
+import { withRouter }       from 'react-router-dom';
+import * as actions         from '../../actions';
+
+import HeaderMenu           from './headerMenu';
+import HeaderLogo           from './headerLogo';
+import HeaderBrand          from './headerBrand';
+
+
+const HeaderContainer = styled.nav`
+    display: flex;
+    background: #fff;
+    height: 56px;
+    padding: 0 16px;
+    border-bottom: 1px solid #d9e3ed;
+    justify-content: space-between;
+    align-items: center;
+`;
 
 class Header extends Component {
-  menuOptions(user) {
-    return [
-      { key: 'signedin', text: `Signed in as: ${user.name}`, disabled: true, value: 1 },
-      { key: 'stripe', text: <Stripe/>, value: 2 },
-      { key: 'logout', text: <Dropdown.Item onClick={() => this.props.logoutUser()}><Icon name="sign out"/> Logout</Dropdown.Item>, value: 3 }
-    ]
-  }
-
-  renderContent(user, isAuthenticated) {
-    if (isAuthenticated) {
-      return <Dropdown
-        simple
-        trigger={<span>Hello, {user.name} <br/>Your credits: {user.credits}</span>}
-        options={this.menuOptions(user)}
-      />
-    }
-
-    return this.props.history.location.pathname !== '/login' && (
-        <Link className="ui icon button basic" to="/login">
-          <Icon name="sign in" /> Login
-        </Link>
-      )
-  }
+  logOutUser = () => this.props.logoutUser();
 
   render() {
     const {user, isAuthenticated} = this.props;
     return (
-      <nav className="header-container">
-        <div className="header-content">
-          <Link className="header-item logo-container" to={isAuthenticated ? '/surveys' : '/'}>
-            <img className="logo" alt="logo" src={logo}/>
-          </Link>
-          <div className="header-item header">
-            <HeaderS size="huge" content="Feedback" />
-          </div>
-          <div className="header-item profile">{this.renderContent(user, isAuthenticated)}</div>
-        </div>
-      </nav>
+      <HeaderContainer>
+        <HeaderLogo isAuthenticated={isAuthenticated} />
+        <HeaderBrand />
+        <HeaderMenu
+          user={user}
+          isAuthenticated={isAuthenticated}
+          logOutUser={this.logOutUser}
+          history={this.props.history}/>
+      </HeaderContainer>
     );
   }
 }

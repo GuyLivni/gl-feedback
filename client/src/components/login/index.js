@@ -1,48 +1,35 @@
-import React                 from 'react';
-import {Button, Icon, Grid,
-        Header, Segment}     from 'semantic-ui-react';
-import {Redirect}            from 'react-router-dom';
-import {connect}             from 'react-redux';
-import './Login.css';
+import React          from 'react';
+import {Grid}         from 'semantic-ui-react';
+import {connect}      from 'react-redux';
+import styled         from 'styled-components';
 
-const Buttons = [
-  {href: '/auth/google',   iconColor: 'red',   name: 'google',   text: 'Sign in with Google'},
-  {href: '/auth/facebook', iconColor: 'blue',  name: 'facebook', text: 'Sign in with Facebook'},
-  {href: '/auth/github',   iconColor: 'black', name: 'github',   text: 'Sign in with Github'}
-];
+import LoginButtons   from './loginButtons';
+import LoginHeader    from './loginHeader';
 
-const renderInfo = () => (
-  <div>
-    <Header textAlign="center" size="large">Welcome back.</Header>
-    <p>
-      Sign in to access your personalized surveys.
-      Get in touch with your users and collect valuable feedback on your products.
-    </p>
-  </div>
-);
+const LoginContainer = styled(Grid).attrs({
+  textAlign:      'center',
+  verticalAlign:  'middle'
+})`
+    height: calc(100% - 56px);
+`;
 
-const renderButtons = (isAuthenticated) => (
-  <Segment basic>
-    {isAuthenticated ? <Redirect to="/surveys"/> : (
-      Buttons.map(({href, name, iconColor, color, text}) =>
-        <Button className="login-button" key={name} basic as="a" href={href}>
-          <div className="login-button-content">
-            <Icon size="large" name={name} color={iconColor}/>
-            <span className="login-button-text">{text}</span>
-          </div>
-        </Button>
-      )
-    )}
-  </Segment>
-);
+const LoginContent = styled(Grid.Column).attrs({
+  textAlign:  'center'
+})`
+    max-width: 600px;
+    background: #fff;
+    border: 1px solid #d9e3ed;
+    border-radius: 5px;
+    padding: 60px !important;
+`;
 
 const Login = ({isAuthenticated}) => (
-  <Grid className="login-container" textAlign="center" verticalAlign="middle">
-    <Grid.Column className="login-content" textAlign="center">
-      {renderInfo()}
-      {renderButtons(isAuthenticated)}
-    </Grid.Column>
-  </Grid>
+  <LoginContainer>
+    <LoginContent>
+      <LoginHeader />
+      <LoginButtons isAuthenticated={isAuthenticated} />
+    </LoginContent>
+  </LoginContainer>
 );
 
 const mapStateToProps = ({auth}) => ({

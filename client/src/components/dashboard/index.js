@@ -1,15 +1,19 @@
 import React                      from 'react';
 import {Container}                from 'semantic-ui-react';
+import styled                     from 'styled-components';
 import SurveyList                 from '../surveys/SurveyList';
 import SurveyMenu                 from '../surveys/surveyMenu';
-import "./Dashboard.css"
+
+const DashboardContainer = styled(Container)`
+  padding-top: 30px;
+`;
 
 const Dashboard = () => {
   return (
-    <Container className="dashboard-container">
+    <DashboardContainer>
       <SurveyMenu/>
       <SurveyList/>
-    </Container>
+    </DashboardContainer>
   );
 };
 
