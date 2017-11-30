@@ -1,9 +1,15 @@
 const mongoose = require('mongoose');
 const Survey = mongoose.model('surveys');
 
-module.exports = async (req, res) => {
-  const surveys = await Survey.find({ _user: req.user.id })
+module.exports = async (req) => {
+  const { id } = req.user;
+
+  const surveys = await Survey.find({ _user: id })
     .select({ recipients: false });
 
-  res.send(surveys);
+  return { status: 200, surveys }
+};
+
+module.exports.onFail = {
+  status: 500
 };

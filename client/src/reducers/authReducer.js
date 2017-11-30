@@ -10,8 +10,8 @@ export default function (state = initialState, action) {
     case USER_FETCH:
     case SURVEY_ADD:
       return Object.assign({}, state, {
-        user: action.payload,
-        isAuthenticated: !!action.payload._id || false
+        user: action.payload.user,
+        isAuthenticated: !!action.payload.user._id || false
       });
 
     case USER_SIGNOUT:

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Survey = mongoose.model('surveys');
 const _ = require('lodash');
 
-module.exports = async (req, res) => {
+module.exports = async (req) => {
   // parse path, remove undefined, keep unique only, update db
   const p = new Path('/api/surveys/:surveyId/:choice');
   _.chain(req.body)
@@ -34,5 +34,9 @@ module.exports = async (req, res) => {
     })
     .value();
 
-  res.send({})
+  return { status: 200, hook: {} }
+};
+
+module.exports.onFail = {
+  status: 500
 };

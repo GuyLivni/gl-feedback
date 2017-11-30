@@ -1,7 +1,7 @@
 const keys   = require('../../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
 
-module.exports = async (req, res) => {
+module.exports = async (req) => {
   // TODO: remember to update this logic for more generic usage
   const {id} = req.body;
   await stripe.charges.create({
@@ -14,5 +14,9 @@ module.exports = async (req, res) => {
   req.user.credits += 5;
   const user = await req.user.save();
 
-  res.send(user);
+  return { status: 200, user }
+};
+
+module.exports.onFail = {
+  status: 500
 };
