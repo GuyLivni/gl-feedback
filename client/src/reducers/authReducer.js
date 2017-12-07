@@ -11,7 +11,7 @@ export default function (state = initialState, action) {
     case SURVEY_ADD:
       return Object.assign({}, state, {
         user: action.payload.user,
-        isAuthenticated: !!action.payload.user._id || false
+        isAuthenticated: (action.payload.user && !!action.payload.user._id) || false
       });
 
     case USER_SIGNOUT:

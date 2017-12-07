@@ -6,7 +6,8 @@ import {Segment, Icon, Dropdown} from 'semantic-ui-react';
 const Menu = styled(Segment)`
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
+    margin-bottom: 25px !important;
 `;
 
 const sortOptions = [

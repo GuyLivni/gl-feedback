@@ -5,7 +5,7 @@ import SurveyList                 from '../surveys/SurveyList';
 import SurveyMenu                 from '../surveys/surveyMenu';
 
 const DashboardContainer = styled(Container)`
-  padding-top: 30px;
+  padding-top: 20px;
 `;
 
 const Dashboard = () => {

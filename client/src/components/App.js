@@ -1,10 +1,14 @@
 import React, {Component}     from 'react';
 import {Route, withRouter}    from 'react-router-dom';
 import {connect}              from 'react-redux';
-import {Container}            from 'semantic-ui-react';
+import styled                 from 'styled-components';
 import * as actions           from '../actions';
 import routes                 from '../routes';
 import Header                 from './header';
+
+const AppContainer = styled.div`
+   height: 100%;
+`;
 
 class App extends Component {
   componentDidMount() {
@@ -16,10 +20,10 @@ class App extends Component {
 
   render() {
     return (
-      <Container fluid style={{ height: '100%' }}>
+      <AppContainer>
         <Header />
         { this.renderRoutes() }
-      </Container>
+      </AppContainer>
     );
   }
 }

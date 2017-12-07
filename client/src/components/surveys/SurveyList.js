@@ -43,7 +43,7 @@ class SurveyList extends Component {
   }
 
   render() {
-    return <Card.Group itemsPerRow="3">{this.renderSurveys()}</Card.Group>
+    return <Card.Group stackable itemsPerRow="3">{this.renderSurveys()}</Card.Group>
   }
 }
 

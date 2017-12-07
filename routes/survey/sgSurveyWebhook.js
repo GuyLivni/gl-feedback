@@ -34,7 +34,7 @@ module.exports = async (req) => {
     })
     .value();
 
-  return { status: 200, hook: {} }
+  return { status: 204, hook: {} }
 };
 
 module.exports.onFail = {

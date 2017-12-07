@@ -3,6 +3,7 @@ import {Grid}         from 'semantic-ui-react';
 import {connect}      from 'react-redux';
 import styled         from 'styled-components';
 
+import { media }      from '../../utils/styleUtils';
 import LoginButtons   from './loginButtons';
 import LoginHeader    from './loginHeader';
 
@@ -21,6 +22,10 @@ const LoginContent = styled(Grid.Column).attrs({
     border: 1px solid #d9e3ed;
     border-radius: 5px;
     padding: 60px !important;
+    ${ media.handheld`
+       max-width: 350px;
+       padding: 30px !important;
+    ` }
 `;
 
 const Login = ({isAuthenticated}) => (
