@@ -6,6 +6,7 @@ const userSchema = new Schema({
   githubId: String,
   facebookId: String,
   name: String,
+  photo: String,
   credits: {
     type: Number,
     default: 0

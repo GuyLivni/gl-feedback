@@ -18,7 +18,7 @@ const sortOptions = [
 ];
 
 const SurveyMenu = () =>
-  <Menu color='blue'>
+  <Menu>
     <Link to="/surveys/new">
       <Icon name="wpforms"/>Create New Survey
     </Link>

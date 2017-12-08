@@ -5,39 +5,74 @@ import { Dropdown, Icon, Button }   from 'semantic-ui-react';
 import Stripe                       from '../stripe';
 import { media }                    from '../../utils/styleUtils';
 
-const Menu = styled(Dropdown.Menu)`
-    flex: 1 1 0%;
-    margin-right: 40px;
-    display: flex;
-    justify-content: flex-end;
+const HeaderMenu = ({ user, isAuthenticated, history, logOutUser }) => {
+
+  const Menu = styled(Dropdown.Menu)`
     ${ media.handheld`
-       margin-right: 0;
        font-size: 0.9em;
     ` }
 `;
 
-const HeaderMenu = ({ user, isAuthenticated, history, logOutUser }) => {
+  const Avatar = styled.img.attrs({
+    src: user && user.photo,
+    alt: "user photo"
+  })`
+    position: relative;
+    width: ${props => props.small ? "40px !important" : "60px !important"};
+    height: ${props => props.small ? "40px !important" : "60px !important"};;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    overflow: hidden;
+  `;
 
-  const menuOptions = () => [
-    { key: 'signedin', text: `Your credits: ${user.credits}`, disabled: true, value: 1 },
-    { key: 'stripe', text: <Stripe/>, value: 2 },
-    { key: 'logout', text: <Dropdown.Item onClick={() => logOutUser()}><Icon name="sign out"/> Logout</Dropdown.Item>, value: 3 }
-  ];
+  const ProfileContainer = styled.div`
+    text-align: center;
+    line-height: 20px;
+    padding: 8px 25px;
+  `;
+
+  const LoginBtn = styled(Button)`
+    box-shadow: none !important;
+    &:hover {
+      box-shadow: 0 0 0 1px rgba(34,36,38,.15) inset !important;
+    }
+  `;
+
+  const Divider = styled.div`
+    border-bottom: 1px solid #EEF1F6;
+  `;
 
   const renderContent = () => {
     if (isAuthenticated) {
       return <Dropdown
         floating
         pointing="top right"
-        trigger={<span><Icon name='user' />Hello, {user.name}</span>}
-        options={menuOptions(user, logOutUser)}
-      />
+        trigger={ <span>{user.photo ? <Avatar small /> : <Icon name='user' />}</span> }
+      >
+        <Dropdown.Menu>
+          <Dropdown.Item>
+            <ProfileContainer>
+              <Avatar/>
+              <Dropdown.Item>{user.name}</Dropdown.Item>
+              <Dropdown.Item>Your Credits: {user.credits}</Dropdown.Item>
+            </ProfileContainer>
+          </Dropdown.Item>
+          <Divider/>
+          <Dropdown.Item>
+            <Icon name="add square"/><Stripe/>
+          </Dropdown.Item>
+          <Divider/>
+          <Dropdown.Item onClick={() => logOutUser()}>
+            <Icon name="sign out"/> Logout
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
     }
 
     return history.location.pathname !== '/login' && (
-      <Button as={Link} to="/login" basic>
+      <LoginBtn as={Link} to="/login" basic>
         <Icon name="sign in" /> Login
-      </Button>
+      </LoginBtn>
     )
   };
 

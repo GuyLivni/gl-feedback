@@ -14,9 +14,18 @@ const HeaderContainer = styled.nav`
     background: #fff;
     height: 56px;
     padding: 0 16px;
-    border-bottom: 1px solid #d9e3ed;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.1);
     justify-content: space-between;
     align-items: center;
+    &:after {
+      background: linear-gradient(to right, #9E7CC1, #8ECDEA);
+      content: '';
+      width: 100%;
+      position: absolute;
+      top: 55px;
+      height: 3px;
+      left: 0;
+    }
 `;
 
 class Header extends Component {

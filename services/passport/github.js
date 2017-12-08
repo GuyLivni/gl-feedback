@@ -15,7 +15,12 @@ module.exports = function (User) {
         return done(null, existingUser);
       }
 
-      const user = await new User({githubId: profile.id, name: profile.displayName}).save();
+      const {id, displayName, photos} = profile;
+      const user = await new User({
+        githubId: id,
+        name: displayName,
+        photo: photos[0].value
+      }).save();
       done(null, user);
     })
 };
