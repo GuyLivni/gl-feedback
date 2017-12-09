@@ -4,6 +4,7 @@ import {Link}                       from 'react-router-dom';
 import { Dropdown, Icon, Button }   from 'semantic-ui-react';
 import Stripe                       from '../stripe';
 import { media }                    from '../../utils/styleUtils';
+import userImg                      from '../../assets/images/user.png';
 
 const HeaderMenu = ({ user, isAuthenticated, history, logOutUser }) => {
 
@@ -11,10 +12,10 @@ const HeaderMenu = ({ user, isAuthenticated, history, logOutUser }) => {
     ${ media.handheld`
        font-size: 0.9em;
     ` }
-`;
+  `;
 
   const Avatar = styled.img.attrs({
-    src: user && user.photo,
+    src: (user && user.photo) || userImg,
     alt: "user photo"
   })`
     position: relative;
@@ -47,7 +48,7 @@ const HeaderMenu = ({ user, isAuthenticated, history, logOutUser }) => {
       return <Dropdown
         floating
         pointing="top right"
-        trigger={ <span>{user.photo ? <Avatar small /> : <Icon name='user' />}</span> }
+        trigger={ <Avatar small /> }
       >
         <Dropdown.Menu>
           <Dropdown.Item>
