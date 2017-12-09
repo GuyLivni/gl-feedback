@@ -7,6 +7,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 injectGlobal`
   body, html {
+    font-family: benton-sans, 'Helvetica Neue', sans-serif;
     background: #f9fafb;
   }
   

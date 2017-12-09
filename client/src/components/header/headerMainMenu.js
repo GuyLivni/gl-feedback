@@ -14,23 +14,32 @@ const MainMenu = styled(Dropdown)`
   `;
 
 const StyledLink = styled(Link)`
-    color: #000;
+    color: #79589F;
     &:hover{
-      color: #000;
+      color: #79589F;
     }
   `;
+
+const StyledDropdown = styled(Dropdown.Item)`
+    color: #79589F !important;
+  `;
+
+const Divider = styled.div`
+   border-bottom: 1px solid #EEF1F6;
+`;
 
 const HeaderMainMenu = () => (
   <MainMenu icon={false} floating pointing="top right" trigger={<Icon name="tasks"/>}>
     <Dropdown.Menu>
       <Dropdown.Item>
         <StyledLink to='/surveys/list'>
-          <Icon name="list"/>&nbsp;&nbsp;&nbsp;Surveys
+          <Icon name="list"/>&nbsp;&nbsp;Surveys
         </StyledLink>
       </Dropdown.Item>
-      <Dropdown.Item>
+      <Divider/>
+      <StyledDropdown>
         <Icon name="add square"/><Stripe/>
-      </Dropdown.Item>
+      </StyledDropdown>
     </Dropdown.Menu>
   </MainMenu>
 );

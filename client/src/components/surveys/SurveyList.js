@@ -1,7 +1,7 @@
 import React, {Component}                   from 'react';
 import {connect}                            from 'react-redux';
 import {Card, Modal, Header, Button}        from 'semantic-ui-react';
-import {fetchSurveys, deleteSurvey}         from '../../actions';
+import * as actions                         from '../../actions';
 import SurveyItem                           from './surveyItem';
 
 class SurveyList extends Component {
@@ -51,4 +51,4 @@ const mapStateToProps = ({surveys}) => ({
   surveys
 });
 
-export default connect(mapStateToProps, {fetchSurveys, deleteSurvey})(SurveyList);
+export default connect(mapStateToProps, actions)(SurveyList);

@@ -23,7 +23,11 @@ const Avatar = styled.img.attrs({
 
 const Divider = styled.div`
    border-bottom: 1px solid #EEF1F6;
-`;
+  `;
+
+const StyledDropdown = styled(Dropdown.Item)`
+    color: #79589F !important;
+  `;
 
 const HeaderProfileMenu = ({user, logout}) => (
   <Dropdown icon={false} floating pointing="top right" trigger={<Avatar user={user} small/>}>
@@ -36,9 +40,9 @@ const HeaderProfileMenu = ({user, logout}) => (
         </ProfileContainer>
       </Dropdown.Item>
       <Divider/>
-      <Dropdown.Item onClick={() => logout()}>
+      <StyledDropdown onClick={() => logout()}>
         <Icon name="sign out"/> Logout
-      </Dropdown.Item>
+      </StyledDropdown>
     </Dropdown.Menu>
   </Dropdown>
 );

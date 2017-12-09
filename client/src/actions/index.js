@@ -26,6 +26,11 @@ export const getSurvey = (payload) => ({
   payload
 });
 
+export const sortSurvey = (payload) => ({
+  type: types.SURVEY_SORT,
+  payload
+});
+
 export const fetchUser = () => ({
   type: types.API,
   payload: {
