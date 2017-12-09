@@ -11,7 +11,7 @@ const LoginContainer = styled(Grid).attrs({
   textAlign:      'center',
   verticalAlign:  'middle'
 })`
-    height: calc(100% - 56px);
+    height: 100%;
 `;
 
 const LoginContent = styled(Grid.Column).attrs({

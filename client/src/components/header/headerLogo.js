@@ -10,8 +10,8 @@ const Img = styled.img.attrs({
     width: 45px;
 `;
 
-const HeaderLogo = ({isAuthenticated}) => (
-  <Link to={isAuthenticated ? '/surveys' : '/'}>
+const HeaderLogo = () => (
+  <Link to='/'>
     <Img />
   </Link>
 );

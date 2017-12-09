@@ -9,7 +9,7 @@ module.exports = (app) => {
 
     app.get(`/auth/${medium}/callback`,
       passport.authenticate(medium, {
-        successRedirect : '/surveys',
+        successRedirect : '/surveys/list',
         failureRedirect : '/login',
         failureFlash : true
       })

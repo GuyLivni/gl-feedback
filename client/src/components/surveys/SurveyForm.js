@@ -24,7 +24,7 @@ class SurveyForm extends Component {
     return (
       <Button.Group>
         <Button negative>
-          <Link style={{color: "#fff"}} to="/surveys">Cancel</Link>
+          <Link style={{color: "#fff"}} to="/surveys/list">Cancel</Link>
         </Button>
         <Button.Or />
         <Form.Button primary content="Done" />

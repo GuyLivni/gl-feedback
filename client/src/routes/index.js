@@ -1,30 +1,35 @@
-import withAuthentication    from "../enhancers/withAuthentication";
+import withAuthentication    from '../enhancers/withAuthentication';
 import Landing               from '../components/landing';
 import Login                 from '../components/login';
-import Dashboard             from '../components/dashboard';
+import SurveysDashboard      from '../components/surveysDashboard';
+import SurveysMain           from '../components/surveys';
 import SurveyNew             from '../components/surveys/SurveyNew';
 
 const routes = [
   {
-    path: "/",
-    component: Landing,
-    exact: true,
-  },
-  {
-    path: "/login",
+    path: '/login',
     component: Login,
-    exact: true,
+    exact: true
   },
   {
-    path: "/surveys",
-    component: withAuthentication(Dashboard),
-    exact: true,
+    path: '/',
+    component: Landing,
+    exact: true
   },
   {
-    path: "/surveys/new",
-    component: withAuthentication(SurveyNew),
-    exact: true,
-  },
+    path: '/surveys',
+    component: withAuthentication(SurveysDashboard),
+    routes: [
+      {
+        path: '/surveys/list',
+        component: SurveysMain
+      },
+      {
+        path: '/surveys/new',
+        component: SurveyNew,
+      },
+    ]
+  }
 ];
 
 export default routes;

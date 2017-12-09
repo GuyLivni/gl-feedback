@@ -4,7 +4,7 @@ import * as types       from '../actions/types';
 const redirectMiddleware = createMiddleware([
   {
     action: types.SURVEY_ADD,
-    afterHandler: (store, action) => action.redirect('/surveys')
+    afterHandler: (store, action) => action.redirect('/surveys/list')
   }
 ]);
 

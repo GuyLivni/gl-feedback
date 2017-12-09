@@ -8,7 +8,6 @@ import HeaderMenu           from './headerMenu';
 import HeaderLogo           from './headerLogo';
 import HeaderBrand          from './headerBrand';
 
-
 const HeaderContainer = styled.nav`
     display: flex;
     background: #fff;
@@ -35,7 +34,7 @@ class Header extends Component {
     const {user, isAuthenticated} = this.props;
     return (
       <HeaderContainer>
-        <HeaderLogo isAuthenticated={isAuthenticated} />
+        <HeaderLogo />
         <HeaderBrand />
         <HeaderMenu
           user={user}

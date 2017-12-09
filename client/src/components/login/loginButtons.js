@@ -28,7 +28,7 @@ const Buttons = [
 
 const LoginButtons = ({isAuthenticated}) => (
   <Segment basic>
-    {isAuthenticated ? <Redirect to="/surveys"/> : (
+    {isAuthenticated ? <Redirect to="/surveys/list"/> : (
       Buttons.map(({href, name, iconColor, text}) =>
         <LoginButton key={name} href={href}>
           <LoginButtonContent>
