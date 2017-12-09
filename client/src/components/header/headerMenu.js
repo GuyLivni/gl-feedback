@@ -1,7 +1,7 @@
 import React                    from 'react';
 import styled                   from 'styled-components';
 import {Link}                   from 'react-router-dom';
-import {Dropdown, Icon, Button} from 'semantic-ui-react';
+import {Dropdown, Icon}         from 'semantic-ui-react';
 import MainMenu                 from './headerMainMenu';
 import ProfileMenu              from './headerProfileMenu';
 import {media}                  from '../../utils/styleUtils';
@@ -16,10 +16,11 @@ const HeaderMenu = ({user, isAuthenticated, history, logOutUser}) => {
     ` }
   `;
 
-  const LoginBtn = styled(Button)`
-    box-shadow: none !important;
+  const LoginBtn = styled(Link)`
+    font-size: 1.2em;
+    color: #4a8dab;
     &:hover {
-      box-shadow: 0 0 0 1px rgba(34,36,38,.15) inset !important;
+      color: #29627b;
     }
   `;
 
@@ -32,8 +33,8 @@ const HeaderMenu = ({user, isAuthenticated, history, logOutUser}) => {
     }
 
     return history.location.pathname !== '/login' && (
-      <LoginBtn as={Link} to="/login" basic>
-        <Icon name="sign in"/> Login
+      <LoginBtn to="/login">
+        <Icon name="sign in" /> Login
       </LoginBtn>
     )
   };

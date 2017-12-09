@@ -6,6 +6,14 @@ import styled         from 'styled-components';
 import { media }      from '../../utils/styleUtils';
 import LoginButtons   from './loginButtons';
 import LoginHeader    from './loginHeader';
+import logo           from '../../assets/images/logo.png';
+
+const LoginLogo = styled.img.attrs({
+  src: logo,
+  alt: "logo"
+})`
+    width: 70px;
+`;
 
 const LoginContainer = styled(Grid).attrs({
   textAlign:      'center',
@@ -17,20 +25,21 @@ const LoginContainer = styled(Grid).attrs({
 const LoginContent = styled(Grid.Column).attrs({
   textAlign:  'center'
 })`
-    max-width: 600px;
+    max-width: 550px;
     background: #fff;
     border: 1px solid #d9e3ed;
     border-radius: 5px;
-    padding: 60px !important;
+    padding: 20px !important;
     ${ media.handheld`
        max-width: 350px;
-       padding: 30px !important;
+       padding: 10px !important;
     ` }
 `;
 
 const Login = ({isAuthenticated}) => (
   <LoginContainer>
     <LoginContent>
+      <LoginLogo />
       <LoginHeader />
       <LoginButtons isAuthenticated={isAuthenticated} />
     </LoginContent>
