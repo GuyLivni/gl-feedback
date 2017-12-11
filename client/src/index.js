@@ -17,8 +17,18 @@ injectGlobal`
 `;
 
 const store = configureStore();
+const rootEl = document.getElementById('root');
 
 render(
   <Root store={store} />,
-  document.getElementById('root')
+  rootEl
 );
+
+if (module.hot) {
+  module.hot.accept('./components/Root', () => {
+    render(
+      <Root store={store} />,
+      rootEl
+    )
+  });
+}

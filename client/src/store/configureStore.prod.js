@@ -4,7 +4,7 @@ import apiMiddleware                                     from '../middlewares/ap
 import redirectMiddleware                                from '../middlewares/redirectMiddleware';
 import reducers                                          from '../reducers';
 
-export default function configureStore( initialState ) {
+const configureStore = initialState => {
   const rootReducer = combineReducers( reducers );
   const middlewares = [thunkMiddleware, redirectMiddleware, apiMiddleware];
 
@@ -13,4 +13,6 @@ export default function configureStore( initialState ) {
     initialState,
     applyMiddleware(...middlewares)
   );
-}
+};
+
+export default configureStore;

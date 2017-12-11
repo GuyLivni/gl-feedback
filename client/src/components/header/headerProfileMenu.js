@@ -1,7 +1,8 @@
-import React              from 'react';
-import styled             from 'styled-components';
-import {Dropdown,Icon}    from 'semantic-ui-react';
-import userImg            from '../../assets/images/user.png';
+import React                      from 'react';
+import styled                     from 'styled-components';
+import {Dropdown,Icon}            from 'semantic-ui-react';
+import {StyledDropdown, Divider}  from './common';
+import userImg                    from '../../assets/images/user.png';
 
 const ProfileContainer = styled.div`
     text-align: center;
@@ -19,14 +20,6 @@ const Avatar = styled.img.attrs({
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     overflow: hidden;
-  `;
-
-const Divider = styled.div`
-   border-bottom: 1px solid #EEF1F6;
-  `;
-
-const StyledDropdown = styled(Dropdown.Item)`
-    color: #79589F !important;
   `;
 
 const HeaderProfileMenu = ({user, logout}) => (

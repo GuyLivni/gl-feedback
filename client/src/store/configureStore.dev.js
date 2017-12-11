@@ -6,7 +6,7 @@ import apiMiddleware                    from '../middlewares/apiMiddleware';
 import redirectMiddleware               from '../middlewares/redirectMiddleware';
 import reducers                         from '../reducers';
 
-export default function configureStore( initialState ) {
+const configureStore = initialState => {
   const rootReducer = combineReducers( reducers );
   const middlewares = [thunkMiddleware, redirectMiddleware, apiMiddleware, logger];
 
@@ -14,9 +14,19 @@ export default function configureStore( initialState ) {
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :
     compose;
 
-  return createStore(
+  const store = createStore(
     rootReducer,
     initialState,
     composeEnhancers(applyMiddleware(...middlewares))
   );
-}
+
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      store.replaceReducer(rootReducer)
+    })
+  }
+
+  return store;
+};
+
+export default configureStore;
