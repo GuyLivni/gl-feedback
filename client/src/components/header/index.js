@@ -3,6 +3,7 @@ import {connect}            from 'react-redux';
 import styled               from 'styled-components';
 import { withRouter }       from 'react-router-dom';
 import * as actions         from '../../actions';
+import {headerType}         from '../../types'
 
 import HeaderMenu           from './headerMenu';
 import HeaderLogo           from './headerLogo';
@@ -50,5 +51,7 @@ const mapStateToProps = ({auth}) => ({
   user: auth.user,
   isAuthenticated: auth.isAuthenticated
 });
+
+Header.propTypes = headerType;
 
 export default withRouter(connect(mapStateToProps, actions)(Header));
