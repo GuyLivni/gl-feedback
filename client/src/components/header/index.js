@@ -1,9 +1,7 @@
 import React, {Component}   from 'react';
 import {connect}            from 'react-redux';
 import styled               from 'styled-components';
-import { withRouter }       from 'react-router-dom';
 import * as actions         from '../../actions';
-import {headerType}         from '../../types'
 
 import HeaderMenu           from './headerMenu';
 import HeaderLogo           from './headerLogo';
@@ -14,7 +12,7 @@ const HeaderContainer = styled.nav`
     background: #fff;
     height: 56px;
     padding: 0 16px;
-    box-shadow: 0px 4px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
     justify-content: space-between;
     align-items: center;
     &:after {
@@ -28,7 +26,7 @@ const HeaderContainer = styled.nav`
     }
 `;
 
-class Header extends Component {
+class Header extends Component{
   logOutUser = () => this.props.logoutUser();
 
   render() {
@@ -40,8 +38,7 @@ class Header extends Component {
         <HeaderMenu
           user={user}
           isAuthenticated={isAuthenticated}
-          logOutUser={this.logOutUser}
-          history={this.props.history}/>
+          logOutUser={this.logOutUser} />
       </HeaderContainer>
     );
   }
@@ -52,6 +49,4 @@ const mapStateToProps = ({auth}) => ({
   isAuthenticated: auth.isAuthenticated
 });
 
-Header.propTypes = headerType;
-
-export default withRouter(connect(mapStateToProps, actions)(Header));
+export default connect(mapStateToProps, actions)(Header);

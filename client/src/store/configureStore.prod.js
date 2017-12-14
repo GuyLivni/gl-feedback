@@ -1,12 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware                                   from 'redux-thunk';
 import apiMiddleware                                     from '../middlewares/apiMiddleware';
-import redirectMiddleware                                from '../middlewares/redirectMiddleware';
 import reducers                                          from '../reducers';
 
 const configureStore = initialState => {
   const rootReducer = combineReducers( reducers );
-  const middlewares = [thunkMiddleware, redirectMiddleware, apiMiddleware];
+  const middlewares = [thunkMiddleware, apiMiddleware];
 
   return createStore(
     rootReducer,

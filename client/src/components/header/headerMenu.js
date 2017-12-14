@@ -6,7 +6,7 @@ import MainMenu                 from './headerMainMenu';
 import ProfileMenu              from './headerProfileMenu';
 import {media}                  from '../../utils/styleUtils';
 
-const HeaderMenu = ({user, isAuthenticated, history, logOutUser}) => {
+const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
 
   const Menu = styled(Dropdown.Menu)`
     display: flex;
@@ -32,7 +32,7 @@ const HeaderMenu = ({user, isAuthenticated, history, logOutUser}) => {
       ]
     }
 
-    return history.location.pathname !== '/login' && (
+    return (
       <LoginBtn to="/login">
         <Icon name="sign in" /> Login
       </LoginBtn>

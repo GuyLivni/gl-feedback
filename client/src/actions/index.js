@@ -5,15 +5,13 @@ export const signinUser = (payload) => ({
   payload
 });
 
-export const signoutUser = (payload) => ({
-  type: types.USER_SIGNOUT,
-  payload
+export const signoutUser = () => ({
+  type: types.USER_SIGNOUT
 });
 
-export const addSurvey = (payload, extra) => ({
+export const addSurvey = (payload) => ({
   type: types.SURVEY_ADD,
-  payload,
-  redirect: url => extra.history.push(url)
+  payload
 });
 
 export const removeSurvey = (payload) => ({
@@ -66,7 +64,7 @@ export const submitSurvey = (values, history) => ({
     method: 'post',
     body: values,
     success: addSurvey,
-    extra: { history }
+    afterHandler: () => history.push('/surveys/list')
   }
 });
 
