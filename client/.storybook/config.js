@@ -1,20 +1,30 @@
-import { configure }  from '@storybook/react';
-import {injectGlobal} from 'styled-components';
-import 'semantic-ui-css/semantic.min.css';
+import React                                 from 'react';
+import { configure, setAddon, addDecorator } from '@storybook/react';
+import { checkA11y }                         from '@storybook/addon-a11y';
+import { withKnobs }                         from '@storybook/addon-knobs';
+import { setOptions }                        from '@storybook/addon-options';
+import { setDefaults }                       from '@storybook/addon-info';
+import Container                             from './Container';
 
-injectGlobal`
-  body, html {
-    font-family: benton-sans, 'Helvetica Neue', sans-serif;
-    background: #f9fafb;
-  }
-  
-  #root {
-    height: 100%;
-  }
-`;
+addDecorator(checkA11y);
+addDecorator(withKnobs);
+addDecorator(story => <Container story={story} />);
 
 function loadStories() {
-  require('../stories/LoginForm');
+  // const req = require.context('../src/components', true, /\-story\.js$/);
+  // req.keys().forEach(filename => req(filename));
+  require('../src/components/common/TextInput/TextInput-story');
 }
 
 configure(loadStories, module);
+
+setOptions({
+  name: 'Feedback',
+  url: 'http://localhost:3000',
+  downPanelInRight: true
+});
+
+setDefaults({
+  header: true,
+  inline: true
+});

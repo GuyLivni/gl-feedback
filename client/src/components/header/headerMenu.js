@@ -17,7 +17,7 @@ const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
   `;
 
   const LoginBtn = styled(Link)`
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #4a8dab;
     &:hover {
       color: #29627b;

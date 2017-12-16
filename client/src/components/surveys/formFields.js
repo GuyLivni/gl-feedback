@@ -3,7 +3,7 @@ export default [
     label: 'From',
     name: 'from',
     errorMessage: 'You must provide valid from email',
-    placeholder: 'john@gmail.com'
+    info: 'Example: john@gmail.com'
   },
   {
     label: 'Survey Title',
@@ -24,6 +24,6 @@ export default [
     label: 'Recipient List',
     name: 'recipients',
     errorMessage: 'You must provide valid email addresses',
-    placeholder: 'Comma separated emails: john@gmail.com, guy@yahoo.com'
+    info: 'Comma separated emails: john@gmail.com, guy@yahoo.com'
   }
 ];

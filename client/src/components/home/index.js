@@ -3,20 +3,20 @@ import {Container}      from 'semantic-ui-react';
 import styled           from 'styled-components';
 import Header           from '../header';
 
-const LandingContainer = styled(Container)`
+const HomeContainer = styled(Container)`
     margin-top: 150px;
     text-align: center;
 `;
 
-const Landing = () => {
+const Home = () => {
   return (
     <div>
       <Header/>
-      <LandingContainer>
+      <HomeContainer>
         <h1>Collect Feedback From Your Users With Confidence</h1>
-      </LandingContainer>
+      </HomeContainer>
     </div>
   );
 };
 
-export default Landing;
+export default Home;

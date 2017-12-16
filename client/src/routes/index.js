@@ -1,5 +1,5 @@
 import withAuthentication    from '../enhancers/withAuthentication';
-import Landing               from '../components/landing';
+import Home                  from '../components/home';
 import Login                 from '../components/login';
 import SurveysDashboard      from '../components/surveysDashboard';
 import SurveysMain           from '../components/surveys';
@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/',
-    component: Landing,
+    component: Home,
     exact: true
   },
   {
