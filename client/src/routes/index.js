@@ -1,32 +1,34 @@
 import withAuthentication    from '../enhancers/withAuthentication';
 import Home                  from '../components/home';
 import Login                 from '../components/login';
-import SurveysDashboard      from '../components/surveysDashboard';
-import SurveysMain           from '../components/surveys';
+import Surveys               from '../components/surveys';
+import SurveyDashboard       from '../components/surveys/SurveyDashboard';
 import SurveyNew             from '../components/surveys/SurveyNew';
 
 const routes = [
-  {
-    path: '/login',
-    component: Login,
-    exact: true
-  },
   {
     path: '/',
     component: Home,
     exact: true
   },
   {
+    path: '/login',
+    component: Login,
+    exact: true
+  },
+  {
     path: '/surveys',
-    component: withAuthentication(SurveysDashboard),
+    component: withAuthentication(Surveys),
     routes: [
       {
-        path: '/surveys/list',
-        component: SurveysMain
+        path: '/surveys',
+        component: SurveyDashboard,
+        exact: true
       },
       {
         path: '/surveys/new',
         component: SurveyNew,
+        exact: true
       },
     ]
   }

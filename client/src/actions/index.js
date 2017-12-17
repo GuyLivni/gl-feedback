@@ -64,7 +64,7 @@ export const submitSurvey = (values, history) => ({
     method: 'post',
     body: values,
     success: addSurvey,
-    afterHandler: () => history.push('/surveys/list')
+    afterHandler: () => history.push('/surveys')
   }
 });
 

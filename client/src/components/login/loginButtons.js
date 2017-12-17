@@ -1,6 +1,5 @@
 import React                   from 'react';
 import styled                  from 'styled-components';
-import {Redirect}              from 'react-router-dom';
 import {Icon, Segment, Button} from 'semantic-ui-react';
 
 const LoginButtonContent = styled.div`
@@ -26,10 +25,10 @@ const Buttons = [
   {href: '/auth/github',   iconColor: 'black', name: 'github',   text: 'Sign in with Github'}
 ];
 
-const LoginButtons = ({isAuthenticated}) => (
+const LoginButtons = () => (
   <Segment basic>
-    {isAuthenticated ? <Redirect to="/surveys/list"/> : (
-      Buttons.map(({href, name, iconColor, text}) =>
+    {
+      Buttons.map(({ href, name, iconColor, text }) =>
         <LoginButton key={name} href={href}>
           <LoginButtonContent>
             <Icon size="large" name={name} color={iconColor}/>
@@ -37,7 +36,7 @@ const LoginButtons = ({isAuthenticated}) => (
           </LoginButtonContent>
         </LoginButton>
       )
-    )}
+    }
   </Segment>
 );
 

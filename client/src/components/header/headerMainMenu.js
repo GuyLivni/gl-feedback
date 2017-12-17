@@ -25,7 +25,7 @@ const HeaderMainMenu = () => (
   <MainMenu icon={false} floating pointing="top right" trigger={<Icon name="tasks"/>}>
     <Dropdown.Menu>
       <Dropdown.Item>
-        <StyledLink to='/surveys/list'>
+        <StyledLink to='/surveys'>
           <Icon name="list"/>&nbsp;&nbsp;Surveys
         </StyledLink>
       </Dropdown.Item>

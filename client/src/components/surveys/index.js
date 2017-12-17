@@ -1,19 +1,15 @@
-import React           from 'react';
-import {Container}     from 'semantic-ui-react';
-import styled          from 'styled-components';
-import SurveyList      from '../surveys/SurveyList';
-import SurveyMenu      from '../surveys/surveyMenu';
+import React                from 'react';
+import RouteWithSubRoutes   from '../../utils/routeWithSubRoutes';
+import Header               from '../header';
 
-const SurveysContainer = styled(Container)`
-  padding-top: 20px;
-`;
-
-const Surveys = () => {
+const Surveys = ({ routes }) => {
   return (
-    <SurveysContainer>
-      <SurveyMenu/>
-      <SurveyList/>
-    </SurveysContainer>
+    <div>
+      <Header/>
+      {routes.map((route) => (
+        <RouteWithSubRoutes key={route.path} {...route}/>
+      ))}
+    </div>
   );
 };
 

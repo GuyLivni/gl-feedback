@@ -1,7 +1,8 @@
 import React          from 'react';
-import {Grid}         from 'semantic-ui-react';
-import {connect}      from 'react-redux';
+import { Grid }       from 'semantic-ui-react';
+import { connect }    from 'react-redux';
 import styled         from 'styled-components';
+import { Redirect }   from 'react-router-dom';
 
 import { media }      from '../../utils/styleUtils';
 import LoginButtons   from './loginButtons';
@@ -10,7 +11,7 @@ import logo           from '../../assets/images/logo.png';
 
 const LoginLogo = styled.img.attrs({
   src: logo,
-  alt: "logo"
+  alt: 'logo'
 })`
     width: 70px;
 `;
@@ -36,17 +37,19 @@ const LoginContent = styled(Grid.Column).attrs({
     ` }
 `;
 
-const Login = ({isAuthenticated}) => (
-  <LoginContainer>
-    <LoginContent>
-      <LoginLogo />
-      <LoginHeader />
-      <LoginButtons isAuthenticated={isAuthenticated} />
-    </LoginContent>
-  </LoginContainer>
+const Login = ({ isAuthenticated }) => (
+  isAuthenticated ?
+    <Redirect to='/surveys' /> :
+    <LoginContainer>
+      <LoginContent>
+        <LoginLogo />
+        <LoginHeader />
+        <LoginButtons />
+      </LoginContent>
+    </LoginContainer>
 );
 
-const mapStateToProps = ({auth}) => ({
+const mapStateToProps = ({ auth }) => ({
   isAuthenticated: auth.isAuthenticated,
 });
 
