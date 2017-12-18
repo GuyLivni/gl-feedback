@@ -1,5 +1,5 @@
-import {SURVEY_GET, SURVEY_REMOVE, SURVEY_SORT} from '../actions/types';
-import moment                                   from 'moment';
+import moment from 'moment';
+import { SURVEY_GET, SURVEY_REMOVE, SURVEY_SORT } from '../actions/types';
 
 export default function (state = [], action) {
   switch (action.type) {

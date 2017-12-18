@@ -1,17 +1,22 @@
-import {USER_FETCH, SURVEY_ADD, USER_SIGNOUT} from '../actions/types';
+import { USER_FETCH, SURVEY_ADD, USER_SIGNOUT } from '../actions/types';
 
 const initialState = {
   user: {},
-  isAuthenticated: false
+  isAuthenticated: false,
+  hasFetchedUser: false
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case USER_FETCH:
-    case SURVEY_ADD:
       return Object.assign({}, state, {
         user: action.payload.user,
-        isAuthenticated: (action.payload.user && !!action.payload.user._id) || false
+        isAuthenticated: (action.payload.user && !!action.payload.user._id) || false,
+        hasFetchedUser: true
+      });
+    case SURVEY_ADD:
+      return Object.assign({}, state, {
+        user: action.payload.user
       });
 
     case USER_SIGNOUT:

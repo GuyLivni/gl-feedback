@@ -1,10 +1,16 @@
-import React                   from "react";
-import {connect}               from "react-redux";
-import {Redirect}              from "react-router-dom"
+import React          from 'react';
+import { connect }    from 'react-redux';
+import { Redirect }   from 'react-router-dom';
+import * as actions   from '../actions';
 
 export default function withAuthentication(WrappedComponent) {
   class AuthenticatedComponent extends React.Component {
-    render() {
+
+    componentDidMount() {
+      this.props.fetchUser();
+    }
+
+    renderContent() {
       return (
         this.props.isAuthenticated ?
           <WrappedComponent {...this.props} /> :
@@ -14,12 +20,19 @@ export default function withAuthentication(WrappedComponent) {
           }} />
       )
     }
+
+    render() {
+      return this.props.hasFetchedUser ?
+        this.renderContent() :
+        null
+    }
   }
 
-  const mapStateToProps = ({auth}) => ({
+  const mapStateToProps = ({ auth }) => ({
     isAuthenticated: auth.isAuthenticated,
+    hasFetchedUser: auth.hasFetchedUser
   });
 
-  return connect(mapStateToProps)(AuthenticatedComponent);
+  return connect(mapStateToProps, actions)(AuthenticatedComponent);
 }
 
