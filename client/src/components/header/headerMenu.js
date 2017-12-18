@@ -1,9 +1,9 @@
 import React                    from 'react';
 import styled                   from 'styled-components';
-import {Link}                   from 'react-router-dom';
-import {Dropdown, Icon}         from 'semantic-ui-react';
+import {Dropdown, Icon, Modal}  from 'semantic-ui-react';
 import MainMenu                 from './headerMainMenu';
 import ProfileMenu              from './headerProfileMenu';
+import Login                    from '../login';
 import {media}                  from '../../utils/styleUtils';
 
 const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
@@ -16,9 +16,13 @@ const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
     ` }
   `;
 
-  const LoginBtn = styled(Link)`
+  const LoginBtn = styled.button`
     font-size: 1.1em;
     color: #4a8dab;
+    background: none;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
     &:hover {
       color: #29627b;
     }
@@ -33,9 +37,17 @@ const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
     }
 
     return (
-      <LoginBtn to="/login">
-        <Icon name="sign in" /> Login
-      </LoginBtn>
+      <Modal
+        trigger={
+          <LoginBtn>
+            <Icon name="sign in"/> Login
+          </LoginBtn>
+        }
+        dimmer="inverted"
+        size="small"
+        basic
+        content={<Login />}
+      />
     )
   };
 

@@ -39,7 +39,7 @@ const LoginContent = styled(Grid.Column).attrs({
 
 const Login = ({ isAuthenticated }) => (
   isAuthenticated ?
-    <Redirect to='/surveys' /> :
+    <Redirect to='/' /> :
     <LoginContainer>
       <LoginContent>
         <LoginLogo />
