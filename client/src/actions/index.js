@@ -1,36 +1,36 @@
-import * as types from './types';
+import * as TYPES from './types';
 
 export const signinUser = (payload) => ({
-  type: types.USER_FETCH,
+  type: TYPES.USER_FETCH,
   payload
 });
 
 export const signoutUser = () => ({
-  type: types.USER_SIGNOUT
+  type: TYPES.USER_SIGNOUT
 });
 
 export const addSurvey = (payload) => ({
-  type: types.SURVEY_ADD,
+  type: TYPES.SURVEY_ADD,
   payload
 });
 
 export const removeSurvey = (payload) => ({
-  type: types.SURVEY_REMOVE,
+  type: TYPES.SURVEY_REMOVE,
   payload
 });
 
 export const getSurvey = (payload) => ({
-  type: types.SURVEY_GET,
+  type: TYPES.SURVEY_GET,
   payload
 });
 
 export const sortSurvey = (payload) => ({
-  type: types.SURVEY_SORT,
+  type: TYPES.SURVEY_SORT,
   payload
 });
 
 export const fetchUser = () => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/me',
     method: 'get',
@@ -39,7 +39,7 @@ export const fetchUser = () => ({
 });
 
 export const logoutUser = () => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/logout',
     method: 'get',
@@ -48,7 +48,7 @@ export const logoutUser = () => ({
 });
 
 export const handleToken = token => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/stripe',
     method: 'post',
@@ -58,7 +58,7 @@ export const handleToken = token => ({
 });
 
 export const submitSurvey = (values, history) => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/surveys',
     method: 'post',
@@ -69,7 +69,7 @@ export const submitSurvey = (values, history) => ({
 });
 
 export const deleteSurvey = id => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/surveys',
     method: 'delete',
@@ -79,7 +79,7 @@ export const deleteSurvey = id => ({
 });
 
 export const fetchSurveys = () => ({
-  type: types.API,
+  type: TYPES.API,
   payload: {
     url: '/api/surveys',
     method: 'get',
