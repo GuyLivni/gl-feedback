@@ -1,6 +1,6 @@
 import React           from 'react';
-import {Container}     from 'semantic-ui-react';
-import {connect}       from 'react-redux';
+import { Container }   from 'semantic-ui-react';
+import { connect }     from 'react-redux';
 import styled          from 'styled-components';
 import SurveyList      from '../surveys/SurveyList';
 import SurveyMenu      from '../surveys/surveyMenu';
@@ -17,10 +17,12 @@ class SurveyDashboard extends React.Component {
 
   handleDelete = id => this.props.deleteSurvey(id);
 
+  handleSort = sortBy => this.props.sortSurvey(sortBy);
+
   render() {
     return (
       <SurveysContainer>
-        <SurveyMenu/>
+        <SurveyMenu onSurveySort={this.handleSort} />
         <SurveyList
           surveys={this.props.surveys}
           onSurveyDelete={this.handleDelete}
