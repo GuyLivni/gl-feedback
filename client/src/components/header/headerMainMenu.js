@@ -21,7 +21,7 @@ const StyledLink = styled(Link)`
     }
   `;
 
-const HeaderMainMenu = () => (
+const HeaderMainMenu = ({ onStripePayment }) => (
   <MainMenu icon={false} floating pointing="top right" trigger={<Icon name="tasks"/>}>
     <Dropdown.Menu>
       <Dropdown.Item>
@@ -31,7 +31,7 @@ const HeaderMainMenu = () => (
       </Dropdown.Item>
       <Divider/>
       <StyledDropdown>
-        <Icon name="add square"/><Stripe/>
+        <Icon name="add square"/><Stripe onStripePayment={onStripePayment} />
       </StyledDropdown>
     </Dropdown.Menu>
   </MainMenu>

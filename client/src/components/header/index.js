@@ -29,6 +29,8 @@ const HeaderContainer = styled.nav`
 class Header extends Component{
   logOutUser = () => this.props.logoutUser();
 
+  handlePayment = token => this.props.handleToken(token);
+
   render() {
     const {user, isAuthenticated} = this.props;
     return (
@@ -38,13 +40,15 @@ class Header extends Component{
         <HeaderMenu
           user={user}
           isAuthenticated={isAuthenticated}
-          logOutUser={this.logOutUser} />
+          logOutUser={this.logOutUser}
+          onStripePayment={this.handlePayment}
+        />
       </HeaderContainer>
     );
   }
 }
 
-const mapStateToProps = ({auth}) => ({
+const mapStateToProps = ({ auth }) => ({
   user: auth.user,
   isAuthenticated: auth.isAuthenticated
 });

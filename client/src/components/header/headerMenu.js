@@ -6,7 +6,7 @@ import ProfileMenu              from './headerProfileMenu';
 import Login                    from '../login';
 import {media}                  from '../../utils/styleUtils';
 
-const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
+const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }) => {
 
   const Menu = styled(Dropdown.Menu)`
     display: flex;
@@ -31,7 +31,7 @@ const HeaderMenu = ({user, isAuthenticated, logOutUser}) => {
   const renderContent = () => {
     if (isAuthenticated) {
       return [
-        <MainMenu key="main-menu" />,
+        <MainMenu key="main-menu" onStripePayment={onStripePayment} />,
         <ProfileMenu key="profile-menu" user={user} logout={logOutUser} />
       ]
     }
