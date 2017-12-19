@@ -4,6 +4,7 @@ import Login                 from '../components/login';
 import Surveys               from '../components/surveys';
 import SurveyDashboard       from '../components/surveys/SurveyDashboard';
 import SurveyNew             from '../components/surveys/SurveyNew';
+import NoMatch               from '../components/noMatch';
 
 const routes = [
   {
@@ -31,7 +32,11 @@ const routes = [
         exact: true
       },
     ]
-  }
+  },
+  {
+    path: '',
+    component: NoMatch
+  },
 ];
 
 export default routes;

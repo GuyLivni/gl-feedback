@@ -1,9 +1,9 @@
 import React         from 'react';
 import styled        from 'styled-components';
-import {Header}      from 'semantic-ui-react';
+import { Link }      from 'react-router-dom';
+import { Header }    from 'semantic-ui-react';
 
-const Brand = styled.div`
-  cursor: default;
+const Brand = styled(Link)`
   text-align: center;
   font-size: 1.2em;
   background: -webkit-linear-gradient(to right, #9E7CC1, #8ECDEA);
@@ -13,7 +13,7 @@ const Brand = styled.div`
 `;
 
 const HeaderBrand = () => (
-  <Brand>
+  <Brand to='/'>
     <Header size="huge" content="Feedback" />
   </Brand>
 );

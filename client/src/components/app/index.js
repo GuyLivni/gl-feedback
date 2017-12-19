@@ -1,5 +1,5 @@
 import React, {Component}     from 'react';
-import {withRouter}           from 'react-router-dom';
+import {withRouter, Switch}   from 'react-router-dom';
 import {connect}              from 'react-redux';
 import styled                 from 'styled-components';
 import RouteWithSubRoutes     from '../../utils/routeWithSubRoutes';
@@ -18,9 +18,11 @@ class App extends Component {
   render() {
     return (
       <AppContainer>
+        <Switch>
         {routes.map( route =>
           <RouteWithSubRoutes key={ route.path } { ...route } />
         )}
+        </Switch>
       </AppContainer>
     );
   }
