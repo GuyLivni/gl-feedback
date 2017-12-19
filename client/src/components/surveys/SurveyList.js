@@ -1,54 +1,38 @@
-import React, {Component}                   from 'react';
-import {connect}                            from 'react-redux';
-import {Card, Modal, Header, Button}        from 'semantic-ui-react';
-import * as actions                         from '../../actions';
-import SurveyItem                           from './surveyItem';
+import React                            from 'react';
+import { Card, Modal, Header, Button }  from 'semantic-ui-react';
+import SurveyItem                       from './surveyItem';
 
-class SurveyList extends Component {
-  componentDidMount() {
-    this.props.fetchSurveys();
-  }
+const renderDeleteModal = (surveyId, handleDelete) => (
+  <Modal
+    trigger={<Button compact floated="right" content="delete" />}
+    dimmer="inverted"
+    size="tiny"
+    header={<Header icon="archive" content="Delete Survey" />}
+    content="Are you sure you want to delete this survey?"
+    actions={[
+      { key: 'No', content: 'No', negative: true },
+      { key: 'Yes', content: 'Yes', positive: true, onClick: () => handleDelete(surveyId) },
+    ]}
+  />
+);
 
-  handleDelete = (id) => {
-    this.props.deleteSurvey(id);
-  };
+const renderSurveys = (surveys, onSurveyDelete) => (
+  surveys.map(survey => {
+      const surveyId = survey._id;
+      return (
+        <SurveyItem
+          key={surveyId}
+          {...survey}
+          renderModal={renderDeleteModal(surveyId, onSurveyDelete)}/>
+      )
+    }
+  )
+);
 
-  renderDeleteModal = (id) => {
-    return (
-      <Modal
-        trigger={<Button compact floated="right" content="delete" />}
-        dimmer="inverted"
-        size="tiny"
-        header={<Header icon="archive" content="Delete Survey" />}
-        content="Are you sure you want to delete this survey?"
-        actions={[
-          { key: 'No', content: 'No', negative: true },
-          { key: 'Yes', content: 'Yes', positive: true, onClick: () => this.handleDelete(id) },
-        ]}
-      />
-    )
-  };
+const SurveyList = ({surveys, onSurveyDelete}) => (
+  <Card.Group stackable itemsPerRow="3">
+    {renderSurveys(surveys, onSurveyDelete)}
+  </Card.Group>
+);
 
-  renderSurveys() {
-    return this.props.surveys.map(survey => {
-        const surveyId = survey._id;
-        return (
-          <SurveyItem
-            key={surveyId}
-            {...survey}
-            renderModal={this.renderDeleteModal(surveyId)}/>
-        )
-      }
-    );
-  }
-
-  render() {
-    return <Card.Group stackable itemsPerRow="3">{this.renderSurveys()}</Card.Group>
-  }
-}
-
-const mapStateToProps = ({surveys}) => ({
-  surveys
-});
-
-export default connect(mapStateToProps, actions)(SurveyList);
+export default SurveyList;

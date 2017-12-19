@@ -2,17 +2,20 @@ const passport             = require('passport');
 const {socialRoutesParams} = require('../../services/passport');
 
 module.exports = (app) => {
-  socialRoutesParams.forEach(({medium, scope}) => {
-    app.get(`/auth/${medium}`,
-      passport.authenticate(medium, {scope})
-    );
+  socialRoutesParams.forEach(({ medium, scope }) => {
+    app.get(`/auth/${medium}`, (req, res, next) => {
+      passport.authenticate(medium,
+        {
+          scope,
+          state: req.query.redirect || '/'
+        })(req, res, next);
+    });
 
     app.get(`/auth/${medium}/callback`,
-      passport.authenticate(medium, {
-        successRedirect : '/surveys',
-        failureRedirect : '/login',
-        failureFlash : true
-      })
+      passport.authenticate(medium, { failureRedirect: '/' }),
+      (req, res) => {
+        res.redirect(req.query.state);
+      }
     );
   });
 
@@ -21,7 +24,7 @@ module.exports = (app) => {
     res.redirect('/');
   });
 
-  app.get('/api/current_user', (req, res) => {
-    res.send({user: req.user});
+  app.get('/api/me', (req, res) => {
+    res.send({ user: req.user });
   })
 };

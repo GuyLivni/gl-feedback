@@ -32,7 +32,7 @@ export const sortSurvey = (payload) => ({
 export const fetchUser = () => ({
   type: types.API,
   payload: {
-    url: '/api/current_user',
+    url: '/api/me',
     method: 'get',
     success: signinUser
   }

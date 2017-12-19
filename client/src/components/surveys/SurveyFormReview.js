@@ -1,13 +1,10 @@
 import _              from 'lodash';
 import React          from 'react';
-import { connect}     from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import {List, Button,
         Header, Icon} from 'semantic-ui-react';
-import * as actions   from '../../actions';
 import formFields     from './formFields';
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
   const fieldsList = _.map(formFields, ({ name, label }) => {
     return (
       <List.Item key={name}>
@@ -38,11 +35,8 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
       <Button
         primary
         content="Send Survey"
-        onClick={() => {
-          submitSurvey(formValues, history);
-          // history.push('/surveys');
-        }
-        }/>
+        onClick={() => submitSurvey(formValues)}
+      />
     </Button.Group>
   );
 
@@ -53,8 +47,4 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   ];
 };
 
-const mapStateToProps = ({form}) => ({
-  formValues: form.surveyForm.values
-});
-
-export default withRouter(connect(mapStateToProps, actions)(SurveyFormReview));
+export default SurveyFormReview;

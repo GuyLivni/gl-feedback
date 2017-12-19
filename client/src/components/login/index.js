@@ -2,8 +2,8 @@ import React          from 'react';
 import { Grid }       from 'semantic-ui-react';
 import { connect }    from 'react-redux';
 import styled         from 'styled-components';
-import { Redirect }   from 'react-router-dom';
-
+import { Redirect,
+         withRouter } from 'react-router-dom';
 import { media }      from '../../utils/styleUtils';
 import LoginButtons   from './loginButtons';
 import LoginHeader    from './loginHeader';
@@ -37,20 +37,23 @@ const LoginContent = styled(Grid.Column).attrs({
     ` }
 `;
 
-const Login = ({ isAuthenticated }) => (
-  isAuthenticated ?
-    <Redirect to='/' /> :
-    <LoginContainer>
-      <LoginContent>
-        <LoginLogo />
-        <LoginHeader />
-        <LoginButtons />
-      </LoginContent>
-    </LoginContainer>
-);
+const Login = ({ isAuthenticated, location }) => {
+  const redirectUrl = (location.state && location.state.redirectUrl) ? location.state.redirectUrl : '';
+  return (
+    isAuthenticated ?
+      <Redirect to='/' /> :
+      <LoginContainer>
+        <LoginContent>
+          <LoginLogo />
+          <LoginHeader />
+          <LoginButtons redirectUrl={redirectUrl} />
+        </LoginContent>
+      </LoginContainer>
+  )
+};
 
 const mapStateToProps = ({ auth }) => ({
   isAuthenticated: auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));

@@ -25,11 +25,13 @@ const Buttons = [
   {href: '/auth/github',   iconColor: 'black', name: 'github',   text: 'Sign in with Github'}
 ];
 
-const LoginButtons = () => (
+const getHref = (href, redirectUrl) => redirectUrl ? `${href}/?redirect=${encodeURIComponent(redirectUrl)}` : href;
+
+const LoginButtons = ({ redirectUrl }) => (
   <Segment basic>
     {
       Buttons.map(({ href, name, iconColor, text }) =>
-        <LoginButton key={name} href={href}>
+        <LoginButton key={name} href={getHref(href, redirectUrl)}>
           <LoginButtonContent>
             <Icon size="large" name={name} color={iconColor}/>
             <LoginButtonText>{text}</LoginButtonText>

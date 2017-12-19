@@ -10,7 +10,9 @@ export default function withAuthentication(WrappedComponent) {
           <WrappedComponent {...this.props} /> :
           <Redirect to={{
             pathname: '/login',
-            state: { from: this.props.location }
+            state: {
+              redirectUrl: this.props.location.pathname
+            }
           }} />
       )
     }
