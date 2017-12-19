@@ -31,7 +31,11 @@ const HeaderMainMenu = ({ onStripePayment }) => (
       </Dropdown.Item>
       <Divider/>
       <StyledDropdown>
-        <Icon name="add square"/><Stripe onStripePayment={onStripePayment} />
+        <Icon name="add square"/>
+        <Stripe
+          onStripePayment={onStripePayment}
+          btnText='Add credits'
+        />
       </StyledDropdown>
     </Dropdown.Menu>
   </MainMenu>

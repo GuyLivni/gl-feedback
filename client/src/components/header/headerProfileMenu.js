@@ -5,21 +5,21 @@ import {StyledDropdown, Divider}  from './common';
 import userImg                    from '../../assets/images/user.png';
 
 const ProfileContainer = styled.div`
-    text-align: center;
-    line-height: 20px;
-    padding: 8px 25px;
+  text-align: center;
+  line-height: 20px;
+  padding: 8px 25px;
   `;
 
 const Avatar = styled.img.attrs({
   src: ({user}) => (user && user.photo) || userImg,
   alt: "user photo"
 })`
-    position: relative;
-    width: ${({small}) => small ? "35px !important" : "60px !important"};
-    height: ${({small}) => small ? "35px !important" : "60px !important"};;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    overflow: hidden;
+  position: relative;
+  width: ${({small}) => small ? "35px !important" : "60px !important"};
+  height: ${({small}) => small ? "35px !important" : "60px !important"};;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  overflow: hidden;
   `;
 
 const HeaderProfileMenu = ({user, logout}) => (
