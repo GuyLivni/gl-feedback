@@ -2,7 +2,7 @@ import React            from 'react';
 import { render }       from 'react-dom';
 import { injectGlobal } from 'styled-components';
 import Root             from './components/Root';
-import configureStore   from './store';
+import configureStore   from './redux/store';
 import 'semantic-ui-css/semantic.min.css';
 
 injectGlobal`

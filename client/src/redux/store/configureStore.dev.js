@@ -3,7 +3,7 @@ import { createStore, applyMiddleware,
 import thunkMiddleware                  from 'redux-thunk';
 import logger                           from 'redux-logger';
 import apiMiddleware                    from '../middlewares/apiMiddleware';
-import reducers                         from '../reducers';
+import * as reducers                    from '../state';
 
 const configureStore = initialState => {
   const rootReducer = combineReducers( reducers );
@@ -20,7 +20,7 @@ const configureStore = initialState => {
   );
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
+    module.hot.accept('../state', () => {
       store.replaceReducer(rootReducer)
     })
   }

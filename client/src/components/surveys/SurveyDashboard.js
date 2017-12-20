@@ -1,10 +1,10 @@
-import React           from 'react';
-import { Container }   from 'semantic-ui-react';
-import { connect }     from 'react-redux';
-import styled          from 'styled-components';
-import SurveyList      from '../surveys/SurveyList';
-import SurveyMenu      from '../surveys/surveyMenu';
-import * as actions    from '../../actions';
+import React              from 'react';
+import { Container }      from 'semantic-ui-react';
+import { connect }        from 'react-redux';
+import styled             from 'styled-components';
+import SurveyList         from '../surveys/SurveyList';
+import SurveyMenu         from '../surveys/surveyMenu';
+import { surveysActions } from '../../redux/state/surveys';
 
 const SurveysContainer = styled(Container)`
   padding-top: 20px;
@@ -36,4 +36,10 @@ const mapStateToProps = ({surveys}) => ({
   surveys
 });
 
-export default connect(mapStateToProps, actions)(SurveyDashboard);
+const mapDispatchToProps = ({
+  fetchSurveys: surveysActions.fetchSurveys,
+  deleteSurvey: surveysActions.deleteSurvey,
+  sortSurvey: surveysActions.sortSurvey,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyDashboard);

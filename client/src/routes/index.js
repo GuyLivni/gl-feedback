@@ -1,4 +1,4 @@
-import withAuthentication    from '../enhancers/withAuthentication';
+import withAuthentication    from '../utils/withAuthentication';
 import Home                  from '../components/home';
 import Login                 from '../components/login';
 import Surveys               from '../components/surveys';

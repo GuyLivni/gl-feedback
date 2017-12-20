@@ -1,15 +1,15 @@
-import moment from 'moment';
-import { SURVEY_GET, SURVEY_REMOVE, SURVEY_SORT } from '../actions/types';
+import moment  from 'moment';
+import types   from './surveysTypes';
 
 export default function (state = [], action) {
   switch (action.type) {
-    case SURVEY_GET:
+    case types.GET_SURVEYS:
       return action.payload.surveys;
 
-    case SURVEY_REMOVE:
+    case types.REMOVE_SURVEY:
       return state.filter(survey => survey._id !== action.payload.survey._id);
 
-    case SURVEY_SORT:
+    case types.SORT_SURVEYS:
       const sortKey = action.payload;
       return [...state.sort( (a, b) => {
         if (sortKey === 'no' || sortKey === 'yes') {

@@ -1,5 +1,6 @@
-import { API } from '../actions/types';
 import axios   from 'axios';
+
+export const API = 'API';
 
 const api = ({ dispatch, getState }) => next => async (action) => {
 

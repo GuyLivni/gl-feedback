@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import { reduxForm }        from 'redux-form';
-import { Container }        from 'semantic-ui-react';
-import { connect }          from 'react-redux';
-import styled               from 'styled-components';
+import React, { Component }  from 'react';
+import { reduxForm }         from 'redux-form';
+import { Container }         from 'semantic-ui-react';
+import { connect }           from 'react-redux';
+import styled                from 'styled-components';
 
-import * as actions         from '../../actions';
-import SurveyForm           from './SurveyForm';
-import SurveyFormReview     from './SurveyFormReview';
+import { surveysActions }    from '../../redux/state/surveys';
+import SurveyForm            from './SurveyForm';
+import SurveyFormReview      from './SurveyFormReview';
 
 const SurveyNewContainer = styled(Container)`
     margin: 40px;
@@ -45,6 +45,10 @@ const mapStateToProps = ({ form }) => ({
   formValues: form
 });
 
+const mapDispatchToProps = ({
+  submitSurvey: surveysActions.submitSurvey,
+});
+
 export default reduxForm({
   form: 'surveyForm'
-})(connect(mapStateToProps, actions)(SurveyNew));
+})(connect(mapStateToProps, mapDispatchToProps)(SurveyNew));

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware                                   from 'redux-thunk';
 import apiMiddleware                                     from '../middlewares/apiMiddleware';
-import reducers                                          from '../reducers';
+import * as reducers                                     from '../state';
 
 const configureStore = initialState => {
   const rootReducer = combineReducers( reducers );

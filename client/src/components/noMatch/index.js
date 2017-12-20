@@ -13,6 +13,10 @@ const ErrorCode = styled.h1`
   margin: 0;
   font-size: 230px;
   flex: 1;
+  background: -webkit-linear-gradient(to right,#9E7CC1,#8ECDEA);
+  background: linear-gradient(to right,#9E7CC1,#8ECDEA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const ErrorMessage = styled.h2`

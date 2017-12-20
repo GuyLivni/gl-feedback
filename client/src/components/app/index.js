@@ -3,7 +3,7 @@ import {withRouter, Switch}   from 'react-router-dom';
 import {connect}              from 'react-redux';
 import styled                 from 'styled-components';
 import RouteWithSubRoutes     from '../../utils/routeWithSubRoutes';
-import * as actions           from '../../actions';
+import { authActions }        from '../../redux/state/auth/index';
 import routes                 from '../../routes';
 
 const AppContainer = styled.div`
@@ -28,4 +28,8 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(null, actions)(App));
+const mapDispatchToProps = ({
+  fetchUser: authActions.fetchUser,
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

@@ -1,7 +1,7 @@
 import React, {Component}   from 'react';
 import {connect}            from 'react-redux';
 import styled               from 'styled-components';
-import * as actions         from '../../actions';
+import { authActions }      from '../../redux/state/auth';
 
 import HeaderMenu           from './headerMenu';
 import HeaderLogo           from './headerLogo';
@@ -53,4 +53,9 @@ const mapStateToProps = ({ auth }) => ({
   isAuthenticated: auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, actions)(Header);
+const mapDispatchToProps = ({
+  logoutUser: authActions.logoutUser,
+  handleToken: authActions.handleToken,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
