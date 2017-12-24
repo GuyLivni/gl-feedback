@@ -20,6 +20,7 @@ const routes = [
   {
     path: '/surveys',
     component: withAuthentication(Surveys),
+    exact: true,
     routes: [
       {
         path: '/surveys',

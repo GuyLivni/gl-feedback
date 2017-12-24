@@ -6,12 +6,10 @@ const StyledTextInfo = styled.span`
   font-weight: 300;
 `;
 
-const TextInputInfo = ({info}) => {
-  return (
-    <StyledTextInfo>
-      {info}
-    </StyledTextInfo>
-  );
-};
+const InputInfo = ({ info }) => (
+  <StyledTextInfo>
+    {info}
+  </StyledTextInfo>
+);
 
-export default TextInputInfo;
+export default InputInfo;

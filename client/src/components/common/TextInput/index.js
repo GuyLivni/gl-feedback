@@ -2,10 +2,10 @@
 import React  from 'react';
 import styled from 'styled-components';
 
-import Label  from './textInputLabel';
-import Input  from './textInput';
-import Error  from './textInputError';
-import Info   from './textInputInfo';
+import Label  from './inputLabel';
+import Input  from './inputField';
+import Error  from './inputError';
+import Info   from './inputInfo';
 
 const StyledTextInput = styled.div`
   position: relative;
@@ -19,7 +19,7 @@ type Props = {
   title?: string,
   /** Label, animated and displayed above the input */
   label?: string,
-  /** Input error message displayed under the input */
+  /** Input error message displayed under the input on focus out */
   error?: string,
   /** Input info, displayed while there is no error */
   info?: string,

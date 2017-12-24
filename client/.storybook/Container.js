@@ -23,10 +23,15 @@ export default class Container extends Component {
     return (
       <div
         style={{
-          padding: '0 2em',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          position: "fixed",
+          top: "0px",
+          left: "0px",
+          bottom: "0px",
+          right: "0px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "auto"
         }}>
         {story()}
       </div>

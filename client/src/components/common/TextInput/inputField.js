@@ -21,20 +21,18 @@ const StyledInput = styled.input`
   }
 `;
 
-const TextInput = ({value, onChange, onFocus, onBlur, error, touched, disabled, title}) => {
-  return (
-    <StyledInput
-      onChange={onChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      value={value}
-      error={error}
-      touched={touched}
-      disabled={disabled}
-      type="text"
-      title={title}
-    />
-  );
-};
+const InputField = ({ value, onChange, onFocus, onBlur, error, touched, disabled, title }) => (
+  <StyledInput
+    onChange={onChange}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    value={value}
+    error={error}
+    touched={touched}
+    disabled={disabled}
+    type="text"
+    title={title}
+  />
+);
 
-export default TextInput;
+export default InputField;

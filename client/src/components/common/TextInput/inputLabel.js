@@ -14,12 +14,10 @@ const StyledLabel = styled.label`
   opacity: ${({disabled}) => disabled ? '0.45' : '1'};
 `;
 
-const TextInputLabel = ({label, focused, value, disabled}) => {
-  return (
-    <StyledLabel focused={focused} value={value} disabled={disabled}>
-      {label}
-    </StyledLabel>
-  );
-};
+const InputLabel = ({ label, focused, value, disabled }) => (
+  <StyledLabel focused={focused} value={value} disabled={disabled}>
+    {label}
+  </StyledLabel>
+);
 
-export default TextInputLabel;
+export default InputLabel;
