@@ -1,11 +1,10 @@
-import _              from 'lodash';
 import React          from 'react';
 import {List, Button,
         Header, Icon} from 'semantic-ui-react';
 import formFields     from './formFields';
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
-  const fieldsList = _.map(formFields, ({ name, label }) => {
+  const fieldsList = formFields.map(({ name, label }) => {
     return (
       <List.Item key={name}>
         <List.Content>

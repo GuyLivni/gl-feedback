@@ -2,28 +2,37 @@ import React, {Component}   from 'react';
 import {reduxForm, Field}   from 'redux-form';
 import {Link}               from 'react-router-dom';
 import {Button}             from 'semantic-ui-react';
-import TextInput            from '../common/TextInput';
-import validateEmails       from '../../utils/validateEmails';
+import styled               from 'styled-components';
+import TextInput            from '../../common/TextInput/index';
+import validateEmails       from '../../../utils/validateEmails';
 import formFields           from './formFields';
 
-class SurveyForm extends Component {
+const StyledLink = styled(Link)`
+    color: #fff;
+    &:hover {
+      color: #fff;
+    }
+  `;
 
-  renderTextInput = ({input, meta, info, label, name}) => (
+class SurveyForm extends Component {
+  renderTextInput = ({ input, meta, info, label, title }) => (
     <TextInput
       info={info}
-      error={meta.error}
+      title={title}
       label={label}
       onChange={input.onChange}
       focus={input.onFocus}
       value={input.value}
-      title={name}
+      error={meta.error}
+      touched={meta.touched}
     />
   );
 
-  renderField = ({name, label, info}) => (
+  renderField = ({ name, label, info }) => (
     <Field
       key={name}
       name={name}
+      title={name}
       label={label}
       info={info}
       component={this.renderTextInput}/>
@@ -32,7 +41,7 @@ class SurveyForm extends Component {
   renderButtons = () => (
     <Button.Group>
       <Button negative>
-        <Link style={{color: "#fff"}} to="/surveys">Cancel</Link>
+        <StyledLink to="/surveys">Cancel</StyledLink>
       </Button>
       <Button.Or/>
       <Button type="submit" primary content="Done"/>

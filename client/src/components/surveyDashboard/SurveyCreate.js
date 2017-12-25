@@ -5,14 +5,14 @@ import { connect }           from 'react-redux';
 import styled                from 'styled-components';
 
 import { surveysActions }    from '../../redux/state/surveys';
-import SurveyForm            from './SurveyForm';
-import SurveyFormReview      from './SurveyFormReview';
+import SurveyForm            from './surveyForm/SurveyForm';
+import SurveyFormReview      from './surveyForm/SurveyFormReview';
 
-const SurveyNewContainer = styled(Container)`
+const SurveyCreateContainer = styled(Container)`
     margin: 40px;
 `;
 
-class SurveyNew extends Component {
+class SurveyCreate extends Component {
   state = { showFormReview: false };
 
   handleSubmit = formValues => this.props.submitSurvey(formValues, this.props.history);
@@ -34,9 +34,9 @@ class SurveyNew extends Component {
 
   render() {
     return (
-      <SurveyNewContainer>
+      <SurveyCreateContainer>
         {this.renderContent()}
-      </SurveyNewContainer>
+      </SurveyCreateContainer>
     );
   }
 }
@@ -51,4 +51,4 @@ const mapDispatchToProps = ({
 
 export default reduxForm({
   form: 'surveyForm'
-})(connect(mapStateToProps, mapDispatchToProps)(SurveyNew));
+})(connect(mapStateToProps, mapDispatchToProps)(SurveyCreate));

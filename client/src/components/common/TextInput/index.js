@@ -27,6 +27,8 @@ type Props = {
   value?: string,
   /** Input field can show that it is disabled. */
   disabled?: boolean,
+  /** Input touched status, can be passed from outside, if not will be checked inside */
+  touched?: boolean,
   /** Input focus function which returns current focus state */
   focus?: Function,
   /**
@@ -38,9 +40,9 @@ type Props = {
 };
 
 type State = {
-  touched: boolean,
   focused: boolean,
-  innerValue: string
+  innerValue: string,
+  innerTouched: boolean
 };
 
 class TextInput extends React.Component<Props, State> {
@@ -48,13 +50,14 @@ class TextInput extends React.Component<Props, State> {
     focus: () => {},
     onChange: () => {},
     disabled: false,
-    title: 'Input field'
+    title: 'Input field',
+    touched: false
   };
 
   state = {
-    touched: false,
     focused: false,
-    innerValue: ''
+    innerValue: '',
+    innerTouched: false
   };
 
   handleOnFocus = () => (
@@ -64,7 +67,7 @@ class TextInput extends React.Component<Props, State> {
   );
 
   handleOnBlur = () => (
-    this.setState({ focused: false, touched: true })
+    this.setState({ focused: false, innerTouched: true })
   );
 
   handleOnChange = (e: SyntheticInputEvent<HTMLInputElement>) => (
@@ -74,8 +77,8 @@ class TextInput extends React.Component<Props, State> {
   );
 
   render() {
-    const { label, error, info, value, disabled, title } = this.props;
-    const { touched, focused, innerValue } = this.state;
+    const { label, error, info, value, disabled, title, touched } = this.props;
+    const { innerTouched, focused, innerValue } = this.state;
 
     return (
       <StyledTextInput>
@@ -89,14 +92,15 @@ class TextInput extends React.Component<Props, State> {
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onChange={this.handleOnChange}
-          touched={touched}
+          touched={innerTouched}
           error={error}
           disabled={disabled}
           title={title}
           value={value || innerValue}
         />
         {
-          (touched && error) ? <Error error={this.props.error} /> :
+          ((touched || innerTouched) && error) ?
+            <Error error={this.props.error} /> :
             info ? <Info info={this.props.info} /> : null
         }
       </StyledTextInput>

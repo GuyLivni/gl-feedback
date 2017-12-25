@@ -1,7 +1,7 @@
 import React            from 'react';
 import {Container}      from 'semantic-ui-react';
 import styled           from 'styled-components';
-import Header           from '../header';
+import Header           from '../../components/header/index';
 import {media}          from '../../utils/styleUtils';
 
 const NoMatchContainer = styled(Container)`

@@ -1,6 +1,6 @@
 import React                from 'react';
 import RouteWithSubRoutes   from '../../utils/routeWithSubRoutes';
-import Header               from '../header';
+import Header               from '../../components/header';
 
 const Surveys = ({ routes }) => {
   return (

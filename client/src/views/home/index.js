@@ -1,7 +1,7 @@
 import React            from 'react';
-import {Container}      from 'semantic-ui-react';
+import { Container }    from 'semantic-ui-react';
 import styled           from 'styled-components';
-import Header           from '../header';
+import Header           from '../../components/header/index';
 
 const HomeContainer = styled(Container)`
     margin-top: 150px;

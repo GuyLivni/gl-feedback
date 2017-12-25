@@ -1,10 +1,10 @@
 import withAuthentication    from '../utils/withAuthentication';
-import Home                  from '../components/home';
-import Login                 from '../components/login';
-import Surveys               from '../components/surveys';
-import SurveyDashboard       from '../components/surveys/SurveyDashboard';
-import SurveyNew             from '../components/surveys/SurveyNew';
-import NoMatch               from '../components/noMatch';
+import Home                  from '../views/home';
+import Login                 from '../views/login';
+import Surveys               from '../views/surveys';
+import SurveyDashboard       from '../components/surveyDashboard';
+import SurveyCreate          from '../components/surveyDashboard/SurveyCreate';
+import NoMatch               from '../views/noMatch';
 
 const routes = [
   {
@@ -20,7 +20,6 @@ const routes = [
   {
     path: '/surveys',
     component: withAuthentication(Surveys),
-    exact: true,
     routes: [
       {
         path: '/surveys',
@@ -29,7 +28,7 @@ const routes = [
       },
       {
         path: '/surveys/new',
-        component: SurveyNew,
+        component: SurveyCreate,
         exact: true
       },
     ]

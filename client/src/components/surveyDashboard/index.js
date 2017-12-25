@@ -2,8 +2,8 @@ import React              from 'react';
 import { Container }      from 'semantic-ui-react';
 import { connect }        from 'react-redux';
 import styled             from 'styled-components';
-import SurveyList         from '../surveys/SurveyList';
-import SurveyMenu         from '../surveys/surveyMenu';
+import SurveyList         from './surveyList/SurveyList';
+import SurveyMenu         from './surveyMenu';
 import { surveysActions } from '../../redux/state/surveys';
 
 const SurveysContainer = styled(Container)`

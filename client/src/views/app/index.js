@@ -4,7 +4,7 @@ import {connect}              from 'react-redux';
 import styled                 from 'styled-components';
 import RouteWithSubRoutes     from '../../utils/routeWithSubRoutes';
 import { authActions }        from '../../redux/state/auth/index';
-import routes                 from '../../routes';
+import routes                 from '../../routes/index';
 
 const AppContainer = styled.div`
    height: 100%;

@@ -3,7 +3,7 @@ import styled                   from 'styled-components';
 import {Dropdown, Icon, Modal}  from 'semantic-ui-react';
 import MainMenu                 from './headerMainMenu';
 import ProfileMenu              from './headerProfileMenu';
-import Login                    from '../login';
+import Login                    from '../../views/login';
 import {media}                  from '../../utils/styleUtils';
 
 const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }) => {
