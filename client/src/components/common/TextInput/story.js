@@ -12,14 +12,7 @@ storiesOf('Text Input', module)
     withInfo({
       text: TextInputIntro
     })(() =>
-      <TextField
-        title={text('title', '')}
-        label={text('label', '')}
-        info={text('info', '')}
-        error={text('error', '')}
-        disabled={boolean('disabled', false)}
-        onChange={action('onChange')}
-      />
+      <TextField />
     )
   ).add('With props',
   withInfo({
@@ -31,6 +24,8 @@ storiesOf('Text Input', module)
       info={text('info', 'Input info')}
       error={text('error', '')}
       disabled={boolean('disabled', false)}
+      touched={boolean('touched', false)}
+      focus={action('onFocus')}
       onChange={action('onChange')}
     />
   )
