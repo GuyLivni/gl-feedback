@@ -13,25 +13,25 @@ const NoMatchContainer = styled(Container)`
 
 const ErrorCode = styled.h1`
   margin: 0;
-  font-size: 230px;
+  font-size: 17em;
   flex: 1;
   background: -webkit-linear-gradient(to right,#9E7CC1,#8ECDEA);
   background: linear-gradient(to right,#9E7CC1,#8ECDEA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
     ${ media.handheld`
-       font-size: 80px;
-    ` }
+       font-size: 6em;
+    `}
 `;
 
 const ErrorMessage = styled.h2`
   color: #b2b2b2;
-  font-size: 70px;
+  font-size: 5em;
   margin: 0;
   flex: 1.3;
     ${ media.handheld`
-       font-size: 30px;
-    ` }
+       font-size: 2em;
+    `}
 `;
 
 const NoMatch = () => {
