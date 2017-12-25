@@ -13,15 +13,18 @@ const StyledInput = styled.input`
   border: 0;
   border-bottom: ${({touched, error}) => (touched && error) ? '1px solid #b71c1c' : '1px solid #d4dadf'};
   box-shadow: ${({touched, error}) => (touched && error) ? '#b71c1c 0 1px 0' : 'transparent 0 1px 0'};
-  transition: 0.3s border-color, 0.3s box-shadow;
+  transition: 0.3s border-color, 0.3s box-shadow, 0.3s border;
   outline: 0;
   &:disabled {
     opacity: .45;
     cursor: not-allowed;
   }
+  &:focus {
+    border-bottom: ${({touched, error}) => (touched && error) ? '2px solid #b71c1c' : '2px solid #03a9f4'};
+  }
 `;
 
-const InputField = ({ value, onChange, onFocus, onBlur, error, touched, disabled, title }) => (
+const InputField = ({ value, onChange, onFocus, onBlur, error, touched, disabled, title, required, type }) => (
   <StyledInput
     onChange={onChange}
     onFocus={onFocus}
@@ -30,7 +33,8 @@ const InputField = ({ value, onChange, onFocus, onBlur, error, touched, disabled
     error={error}
     touched={touched}
     disabled={disabled}
-    type="text"
+    type={type}
+    required={required}
     title={title}
   />
 );

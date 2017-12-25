@@ -14,7 +14,19 @@ const StyledTextInput = styled.div`
   text-align: left;
 `;
 
+const InputTypes = {
+  text: 'text',
+  number: 'number',
+  email: 'email',
+  search: 'search',
+  tel: 'tel',
+  url: 'url',
+  password: 'password'
+};
+
 type Props = {
+  /** Input field type: 'text' | 'number'| 'email' | 'search' | 'tel' | 'url' | 'password' */
+  type?: $Keys<typeof InputTypes>,
   /** Title, title describing the input */
   title?: string,
   /** Label, animated and displayed above the input */
@@ -24,11 +36,13 @@ type Props = {
   /** Input info, displayed while there is no error */
   info?: string,
   /** Input value which can be provided and controlled externally */
-  value?: string,
+  value?: string | number,
   /** Input field can show that it is disabled. */
   disabled?: boolean,
   /** Input touched status, can be passed from outside, if not will be checked inside */
   touched?: boolean,
+  /** Is the input field required */
+  required?: boolean,
   /** Input focus function which returns current focus state */
   focus?: Function,
   /**
@@ -51,7 +65,9 @@ class TextInput extends React.Component<Props, State> {
     onChange: () => {},
     disabled: false,
     title: 'Input field',
-    touched: false
+    touched: false,
+    required: false,
+    type: 'text'
   };
 
   state = {
@@ -77,7 +93,7 @@ class TextInput extends React.Component<Props, State> {
   );
 
   render() {
-    const { label, error, info, value, disabled, title, touched } = this.props;
+    const { label, error, info, value, disabled, title, touched, required, type } = this.props;
     const { innerTouched, focused, innerValue } = this.state;
 
     return (
@@ -86,17 +102,22 @@ class TextInput extends React.Component<Props, State> {
           label={label}
           focused={focused}
           disabled={disabled}
+          error={error}
+          touched={touched || innerTouched}
           value={value || innerValue}
+          required={required}
         />
         <Input
           onFocus={this.handleOnFocus}
           onBlur={this.handleOnBlur}
           onChange={this.handleOnChange}
-          touched={innerTouched}
+          touched={touched || innerTouched}
           error={error}
+          required={required}
           disabled={disabled}
           title={title}
           value={value || innerValue}
+          type={type}
         />
         {
           ((touched || innerTouched) && error) ?
@@ -109,4 +130,3 @@ class TextInput extends React.Component<Props, State> {
 }
 
 export default TextInput;
-

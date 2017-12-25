@@ -1,3 +1,4 @@
+// @flow
 import React           from 'react';
 import {storiesOf}     from '@storybook/react';
 import {withInfo}      from '@storybook/addon-info';
@@ -27,6 +28,7 @@ storiesOf('Text Input', module)
       touched={boolean('touched', false)}
       focus={action('onFocus')}
       onChange={action('onChange')}
+      type='text'
     />
   )
 );
