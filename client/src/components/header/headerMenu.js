@@ -18,13 +18,13 @@ const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }) => {
 
   const LoginBtn = styled.button`
     font-size: 1.1em;
-    color: #4a8dab;
+    color: #64acce;
     background: none;
     outline: 0;
     border: 0;
     cursor: pointer;
     &:hover {
-      color: #29627b;
+      color: #3797bd;
     }
   `;
 

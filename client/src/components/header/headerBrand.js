@@ -6,13 +6,12 @@ import { media }     from '../../utils/styleUtils';
 
 const Brand = styled(Link)`
   text-align: center;
-  font-size: 2.2em;
-  background: -webkit-linear-gradient(to right, #9E7CC1, #8ECDEA);
+  font-size: 2em;
 	background: linear-gradient(to right, #9E7CC1, #8ECDEA);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	  ${ media.handheld`
-       font-size: 1.8em;
+       font-size: 1.7em;
     `}
 `;
 
