@@ -9,10 +9,10 @@ addDecorator(checkA11y);
 addDecorator(withKnobs);
 addDecorator(story => <Container story={story} />);
 
+const req = require.context('../src', true, /story\.js$/);
+
 function loadStories() {
-  // const req = require.context('../src/components', true, /\-story\.js$/);
-  // req.keys().forEach(filename => req(filename));
-  require('../src/components/common/TextInput/story');
+  req.keys().forEach(req);
 }
 
 configure(loadStories, module);
