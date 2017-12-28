@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const Survey = mongoose.model('surveys');
 
 module.exports = async (req) => {
-  // parse path, remove undefined, keep unique only, update db
   const p = new Path('/api/surveys/:surveyId/:choice');
 
   req.body
