@@ -2,12 +2,12 @@ const Path = require('path-parser');
 const { URL } = require('url');
 const mongoose = require('mongoose');
 const Survey = mongoose.model('surveys');
-const _ = require('lodash');
 
 module.exports = async (req) => {
   // parse path, remove undefined, keep unique only, update db
   const p = new Path('/api/surveys/:surveyId/:choice');
-  _.chain(req.body)
+
+  req.body
     .map(({ email, url }) => {
       const match = p.test(new URL(url).pathname);
       if (match) {
@@ -18,9 +18,8 @@ module.exports = async (req) => {
         }
       }
     })
-    .compact()
-    .uniqBy('email', 'surveyId')
-    .each(({ surveyId, email, choice }) => {
+    .filter(value => !!value)
+    .forEach(({ surveyId, email, choice }) => {
       Survey.updateOne({
         _id: surveyId,
         recipients: {
@@ -31,8 +30,7 @@ module.exports = async (req) => {
         $set: { 'recipients.$.responded': true },
         lastResponded: new Date()
       }).exec();
-    })
-    .value();
+    });
 
   return { status: 204, hook: {} }
 };

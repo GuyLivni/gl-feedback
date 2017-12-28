@@ -11,7 +11,7 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "webhook": "./sendgrid_webhook.sh"
   },
@@ -22,7 +22,6 @@
     "cookie-session": "^1.3.2",
     "express": "^4.15.4",
     "localtunnel": "^1.8.3",
-    "lodash": "^4.17.4",
     "mongoose": "^4.11.13",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
