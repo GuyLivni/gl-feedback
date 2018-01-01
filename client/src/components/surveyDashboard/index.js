@@ -32,7 +32,7 @@ class SurveyDashboard extends React.Component {
   }
 }
 
-const mapStateToProps = ({surveys}) => ({
+const mapStateToProps = ({ surveys }) => ({
   surveys
 });
 

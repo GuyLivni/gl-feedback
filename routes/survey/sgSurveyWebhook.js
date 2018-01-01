@@ -1,7 +1,7 @@
-const Path = require('path-parser');
-const { URL } = require('url');
-const mongoose = require('mongoose');
-const Survey = mongoose.model('surveys');
+const Path      = require('path-parser');
+const { URL }   = require('url');
+const mongoose  = require('mongoose');
+const Survey    = mongoose.model('surveys');
 
 module.exports = async (req) => {
   const p = new Path('/api/surveys/:surveyId/:choice');

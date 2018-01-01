@@ -1,4 +1,5 @@
 const mongoose       = require('mongoose');
+const Joi            = require('joi');
 const Mailer         = require('../../services/Mailer');
 const surveyTemplate = require('../../services/emailTemplates/surveyTemplate');
 
@@ -24,6 +25,16 @@ module.exports = async (req) => {
   const user = await req.user.save();
 
   return { status: 200, user }
+};
+
+module.exports.validations = {
+  body: {
+    from: Joi.string().required(),
+    title: Joi.string().required(),
+    subject: Joi.string().required(),
+    body: Joi.string().required(),
+    recipients: Joi.string().required()
+  }
 };
 
 module.exports.onFail = {
