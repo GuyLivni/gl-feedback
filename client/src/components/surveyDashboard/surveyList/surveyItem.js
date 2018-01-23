@@ -1,7 +1,20 @@
+/* @flow */
 import React                     from 'react';
 import { Card, Icon, Statistic } from 'semantic-ui-react';
 
-const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal, from, lastResponded }) => (
+type Props = {
+  title: string,
+  subject: string,
+  body: string,
+  yes: string,
+  no: string,
+  dateSent: string,
+  renderModal: Function,
+  from: string,
+  lastResponded: string,
+}
+
+const SurveyItem = ({ title, subject, body, yes, no, dateSent, renderModal, from, lastResponded }: Props) => (
   <Card color='blue'>
     <Card.Content>
       <Card.Header>

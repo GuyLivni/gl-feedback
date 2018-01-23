@@ -1,3 +1,4 @@
+/* @flow */
 import React                      from 'react';
 import styled                     from 'styled-components';
 import {Link}                     from 'react-router-dom';
@@ -21,7 +22,11 @@ const StyledLink = styled(Link)`
     }
   `;
 
-const HeaderMainMenu = ({ onStripePayment }) => (
+type Props = {
+  onStripePayment: Function
+}
+
+const HeaderMainMenu = ({ onStripePayment }: Props) => (
   <MainMenu icon={false} floating pointing="top right" trigger={<Icon name="tasks"/>}>
     <Dropdown.Menu>
       <Dropdown.Item>

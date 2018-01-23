@@ -1,9 +1,14 @@
+/* @flow */
 import React           from 'react';
 import StripeCheckout  from 'react-stripe-checkout';
 import logo            from '../../assets/images/logo.png';
 
+type Props = {
+  onStripePayment: Function,
+  btnText: string
+}
 
-const Stripe = ({ onStripePayment, btnText }) => (
+const Stripe = ({ onStripePayment, btnText }: Props) => (
   <StripeCheckout
     name="Feedback"
     description="$5 for 5 email credits"

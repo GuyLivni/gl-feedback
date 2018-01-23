@@ -1,3 +1,4 @@
+/* @flow */
 import React                    from 'react';
 import styled                   from 'styled-components';
 import {Dropdown, Icon, Modal}  from 'semantic-ui-react';
@@ -6,7 +7,14 @@ import ProfileMenu              from './headerProfileMenu';
 import Login                    from '../../views/login';
 import {media}                  from '../../utils/styleUtils';
 
-const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }) => {
+type Props = {
+  user: Object,
+  isAuthenticated: boolean,
+  logOutUser: Function,
+  onStripePayment: Function
+}
+
+const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }: Props) => {
 
   const Menu = styled(Dropdown.Menu)`
     display: flex;

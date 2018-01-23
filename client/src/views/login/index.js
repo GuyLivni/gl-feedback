@@ -1,13 +1,15 @@
-import React          from 'react';
-import { Grid }       from 'semantic-ui-react';
-import { connect }    from 'react-redux';
-import styled         from 'styled-components';
+/* @flow */
+import React                    from 'react';
+import { Grid }                 from 'semantic-ui-react';
+import { connect }              from 'react-redux';
+import type { MapStateToProps } from 'react-redux';
+import styled                   from 'styled-components';
 import { Redirect,
-         withRouter } from 'react-router-dom';
-import { media }      from '../../utils/styleUtils';
-import LoginButtons   from './loginButtons';
-import LoginHeader    from './loginHeader';
-import logo           from '../../assets/images/logo.png';
+         withRouter }           from 'react-router-dom';
+import { media }                from '../../utils/styleUtils';
+import LoginButtons             from './loginButtons';
+import LoginHeader              from './loginHeader';
+import logo                     from '../../assets/images/logo.png';
 
 const LoginLogo = styled.img.attrs({
   src: logo,
@@ -37,7 +39,12 @@ const LoginContent = styled(Grid.Column).attrs({
     ` }
 `;
 
-const Login = ({ isAuthenticated, location }) => {
+type Props = {
+  isAuthenticated: boolean,
+  location: Object
+}
+
+const Login = ({ isAuthenticated, location }: Props) => {
   const redirectUrl = (location.state && location.state.redirectUrl) ? location.state.redirectUrl : '';
   return (
     isAuthenticated ?
@@ -52,7 +59,7 @@ const Login = ({ isAuthenticated, location }) => {
   )
 };
 
-const mapStateToProps = ({ auth }) => ({
+const mapStateToProps: MapStateToProps<*, *, *> = ({ auth }: Object) => ({
   isAuthenticated: auth.isAuthenticated,
 });
 

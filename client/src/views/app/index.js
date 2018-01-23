@@ -1,3 +1,4 @@
+/* @flow */
 import React, {Component}     from 'react';
 import {withRouter, Switch}   from 'react-router-dom';
 import {connect}              from 'react-redux';
@@ -18,7 +19,11 @@ const StyledLoadingBar = styled(LoadingBar)`
   z-index: 10000000000;
 `;
 
-class App extends Component {
+type Props = {
+  fetchUser: Function
+}
+
+class App extends Component<Props> {
   componentDidMount() {
     this.props.fetchUser();
   }

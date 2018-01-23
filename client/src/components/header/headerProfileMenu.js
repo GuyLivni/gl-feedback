@@ -1,3 +1,4 @@
+/* @flow */
 import React                      from 'react';
 import styled                     from 'styled-components';
 import {Dropdown,Icon}            from 'semantic-ui-react';
@@ -22,7 +23,12 @@ const Avatar = styled.img.attrs({
   overflow: hidden;
   `;
 
-const HeaderProfileMenu = ({user, logout}) => (
+type Props = {
+  user: Object,
+  logout: Function
+}
+
+const HeaderProfileMenu = ({user, logout}: Props) => (
   <Dropdown icon={false} floating pointing="top right" trigger={<Avatar user={user} small/>}>
     <Dropdown.Menu>
       <Dropdown.Item>

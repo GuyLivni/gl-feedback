@@ -1,4 +1,5 @@
-import React              from 'react';
+/* @flow */
+import React, {Component} from 'react';
 import { Container }      from 'semantic-ui-react';
 import { connect }        from 'react-redux';
 import styled             from 'styled-components';
@@ -10,14 +11,21 @@ const SurveysContainer = styled(Container)`
   padding-top: 20px;
 `;
 
-class SurveyDashboard extends React.Component {
+type Props = {
+  fetchSurveys: Function,
+  deleteSurvey: Function,
+  sortSurvey: Function,
+  surveys: Array<Object>
+}
+
+class SurveyDashboard extends Component<Props> {
   componentDidMount() {
     this.props.fetchSurveys();
   }
 
-  handleDelete = id => this.props.deleteSurvey(id);
+  handleDelete = (id:string) => this.props.deleteSurvey(id);
 
-  handleSort = sortBy => this.props.sortSurvey(sortBy);
+  handleSort = (sortBy:string) => this.props.sortSurvey(sortBy);
 
   render() {
     return (

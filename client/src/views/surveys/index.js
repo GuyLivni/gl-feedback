@@ -1,8 +1,13 @@
+/* @flow */
 import React                from 'react';
 import RouteWithSubRoutes   from '../../utils/routeWithSubRoutes';
 import Header               from '../../components/header';
 
-const Surveys = ({ routes }) => {
+type Props = {
+  routes: Object
+}
+
+const Surveys = ({ routes }: Props) => {
   return (
     <div>
       <Header/>

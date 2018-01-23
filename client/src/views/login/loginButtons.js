@@ -1,3 +1,4 @@
+/* @flow */
 import React                   from 'react';
 import styled                  from 'styled-components';
 import {Icon, Segment, Button} from 'semantic-ui-react';
@@ -25,21 +26,28 @@ const Buttons = [
   {href: '/auth/github',   iconColor: 'black', name: 'github',   text: 'Sign in with Github'}
 ];
 
-const getHref = (href, redirectUrl) => redirectUrl ? `${href}/?redirect=${encodeURIComponent(redirectUrl)}` : href;
+type Props = {
+  redirectUrl: string
+}
 
-const LoginButtons = ({ redirectUrl }) => (
-  <Segment basic>
-    {
-      Buttons.map(({ href, name, iconColor, text }) =>
-        <LoginButton key={name} href={getHref(href, redirectUrl)}>
-          <LoginButtonContent>
-            <Icon size="large" name={name} color={iconColor}/>
-            <LoginButtonText>{text}</LoginButtonText>
-          </LoginButtonContent>
-        </LoginButton>
-      )
-    }
-  </Segment>
-);
+const LoginButtons = ({ redirectUrl }: Props) => {
+
+  const getHref = (href: string) => redirectUrl ? `${href}/?redirect=${encodeURIComponent(redirectUrl)}` : href;
+
+  return (
+    <Segment basic>
+      {
+        Buttons.map(({ href, name, iconColor, text }) =>
+          <LoginButton key={name} href={getHref(href)}>
+            <LoginButtonContent>
+              <Icon size="large" name={name} color={iconColor}/>
+              <LoginButtonText>{text}</LoginButtonText>
+            </LoginButtonContent>
+          </LoginButton>
+        )
+      }
+    </Segment>
+  )
+};
 
 export default LoginButtons;

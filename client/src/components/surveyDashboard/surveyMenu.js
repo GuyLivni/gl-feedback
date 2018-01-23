@@ -1,3 +1,4 @@
+/* @flow */
 import React                       from 'react';
 import { Link }                    from 'react-router-dom';
 import styled                      from 'styled-components';
@@ -17,7 +18,11 @@ const options = [
   { key: '4', value: 'dateSent', text: 'Sent date' }
 ];
 
-const SurveyMenu = ({ onSurveySort }) => (
+type Props = {
+  onSurveySort: Function
+}
+
+const SurveyMenu = ({ onSurveySort }: Props) => (
   <Menu>
     <Link to="/surveys/new">
       <Icon name="wpforms"/>Create New Survey

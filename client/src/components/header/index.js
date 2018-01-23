@@ -1,3 +1,4 @@
+/* @flow */
 import React, {Component}   from 'react';
 import {connect}            from 'react-redux';
 import styled               from 'styled-components';
@@ -26,10 +27,17 @@ const HeaderContainer = styled.nav`
     }
 `;
 
-class Header extends Component{
+type Props = {
+  logoutUser: Function,
+  handleToken: Function,
+  user: Object,
+  isAuthenticated: boolean
+}
+
+class Header extends Component<Props>{
   logOutUser = () => this.props.logoutUser();
 
-  handlePayment = token => this.props.handleToken(token);
+  handlePayment = (token:Object) => this.props.handleToken(token);
 
   render() {
     const {user, isAuthenticated} = this.props;

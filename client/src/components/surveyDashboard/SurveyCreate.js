@@ -1,3 +1,4 @@
+/* @flow */
 import React, { Component }  from 'react';
 import { reduxForm }         from 'redux-form';
 import { Container }         from 'semantic-ui-react';
@@ -12,10 +13,20 @@ const SurveyCreateContainer = styled(Container)`
     margin: 40px;
 `;
 
-class SurveyCreate extends Component {
+type Props = {
+  submitSurvey: Function,
+  history: Object,
+  formValues: Object
+}
+
+type State = {
+  showFormReview: boolean
+};
+
+class SurveyCreate extends Component<Props, State> {
   state = { showFormReview: false };
 
-  handleSubmit = formValues => this.props.submitSurvey(formValues, this.props.history);
+  handleSubmit = (formValues: Object) => this.props.submitSurvey(formValues, this.props.history);
 
   renderContent() {
     if (this.state.showFormReview) {
