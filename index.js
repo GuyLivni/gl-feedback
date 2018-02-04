@@ -6,7 +6,7 @@ const passport        = require('passport');
 const keys            = require('./config/keys');
 const bodyParser      = require('body-parser');
 const fs              = require('fs');
-
+const compression     = require("compression");
 
 require('./models/User');
 require('./models/Survey');
@@ -20,7 +20,7 @@ mongoose.connect(keys.mongoURI, {
 const app = express();
 
 app.use(bodyParser.json());
-
+app.use(compression());
 
 app.use(cookieSession({
   maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
