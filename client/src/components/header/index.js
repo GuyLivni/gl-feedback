@@ -30,7 +30,7 @@ const HeaderContainer = styled.nav`
 type Props = {
   logoutUser: Function,
   handleToken: Function,
-  user: Object,
+  user: User,
   isAuthenticated: boolean
 }
 

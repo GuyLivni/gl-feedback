@@ -15,10 +15,10 @@ function loadStories() {
   req.keys().forEach(req);
 }
 
-configure(loadStories, module);
-
 setOptions({
   name: 'Feedback',
   url: 'http://localhost:3000',
-  sidebarAnimations: true
+  addonPanelInRight: true
 });
+
+configure(loadStories, module);

@@ -8,7 +8,7 @@ import Login                    from '../../views/login';
 import {media}                  from '../../utils/styleUtils';
 
 type Props = {
-  user: Object,
+  user: User,
   isAuthenticated: boolean,
   logOutUser: Function,
   onStripePayment: Function

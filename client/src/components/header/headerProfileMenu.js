@@ -24,7 +24,7 @@ const Avatar = styled.img.attrs({
   `;
 
 type Props = {
-  user: Object,
+  user: User,
   logout: Function
 }
 
