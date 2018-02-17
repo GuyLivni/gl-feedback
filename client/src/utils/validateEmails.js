@@ -4,7 +4,7 @@ const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
 
 export default (emails: string) => {
   const invalidEmails = emails
-    .split(',')
+    .split(",")
     .map(email => email.trim())
     .filter(email => re.test(email) === false);
 

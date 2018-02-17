@@ -1,45 +1,27 @@
-import types   from './authTypes';
-import { API } from '../../middlewares/apiMiddleware';
-
-const signinUser = (payload) => ({
-  type: types.FETCH_USER,
-  payload
-});
-
-const signoutUser = () => ({
-  type: types.SIGNOUT_USER
-});
+import { authTypes } from "./";
 
 const fetchUser = () => ({
-  type: API,
-  payload: {
-    url: '/api/me',
-    method: 'get',
-    success: signinUser
+  type: authTypes.FETCH_USER,
+  request: {
+    method: "get",
+    url: "/api/me"
   }
 });
 
 const logoutUser = () => ({
-  type: API,
-  payload: {
-    url: '/api/logout',
-    method: 'get',
-    success: signoutUser
+  type: authTypes.SIGNOUT_USER,
+  request: {
+    method: "get",
+    url: "/api/logout"
   }
 });
 
-const handleToken = token => ({
-  type: API,
-  payload: {
-    url: '/api/stripe',
-    method: 'post',
-    body: token,
-    success: signinUser
+const handleToken = () => ({
+  type: authTypes.FETCH_USER,
+  request: {
+    method: "post",
+    url: "/api/stripe"
   }
 });
 
-export default {
-  handleToken,
-  logoutUser,
-  fetchUser
-}
+export { handleToken, logoutUser, fetchUser };

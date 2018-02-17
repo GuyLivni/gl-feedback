@@ -1,27 +1,31 @@
 /* @flow */
-import React                    from 'react';
-import styled                   from 'styled-components';
-import {Dropdown, Icon, Modal}  from 'semantic-ui-react';
-import MainMenu                 from './headerMainMenu';
-import ProfileMenu              from './headerProfileMenu';
-import Login                    from '../../views/login';
-import {media}                  from '../../utils/styleUtils';
+import React from "react";
+import styled from "styled-components";
+import { Dropdown, Icon, Modal } from "semantic-ui-react";
+import MainMenu from "./headerMainMenu";
+import ProfileMenu from "./headerProfileMenu";
+import Login from "../../views/login";
+import { media } from "../../utils/styleUtils";
 
 type Props = {
   user: User,
   isAuthenticated: boolean,
   logOutUser: Function,
   onStripePayment: Function
-}
+};
 
-const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }: Props) => {
-
+const HeaderMenu = ({
+  user,
+  isAuthenticated,
+  logOutUser,
+  onStripePayment
+}: Props) => {
   const Menu = styled(Dropdown.Menu)`
     display: flex;
     align-items: center;
-    ${ media.handheld`
+    ${media.handheld`
        font-size: 0.9em;
-    ` }
+    `};
   `;
 
   const LoginBtn = styled.button`
@@ -41,14 +45,14 @@ const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }: Prop
       return [
         <MainMenu key="main-menu" onStripePayment={onStripePayment} />,
         <ProfileMenu key="profile-menu" user={user} logout={logOutUser} />
-      ]
+      ];
     }
 
     return (
       <Modal
         trigger={
           <LoginBtn>
-            <Icon name="sign in"/> Login
+            <Icon name="sign in" /> Login
           </LoginBtn>
         }
         dimmer="inverted"
@@ -56,10 +60,10 @@ const HeaderMenu = ({ user, isAuthenticated, logOutUser, onStripePayment }: Prop
         basic
         content={<Login />}
       />
-    )
+    );
   };
 
-  return <Menu>{renderContent()}</Menu>
+  return <Menu>{renderContent()}</Menu>;
 };
 
 export default HeaderMenu;

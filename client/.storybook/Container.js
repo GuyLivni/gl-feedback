@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {injectGlobal} from 'styled-components';
+import React                  from 'react';
+import styled, {injectGlobal} from 'styled-components';
 import 'semantic-ui-css/semantic.min.css';
 
 injectGlobal`
@@ -16,25 +16,22 @@ injectGlobal`
   }
 `;
 
-export default class Container extends Component {
-  render() {
-    const { story } = this.props;
+const StyledContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+`;
 
-    return (
-      <div
-        style={{
-          position: "fixed",
-          top: "0px",
-          left: "0px",
-          bottom: "0px",
-          right: "0px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "auto"
-        }}>
-        {story()}
-      </div>
-    );
-  }
-}
+const Container = ({ story }) => (
+  <StyledContainer>
+    {story()}
+  </StyledContainer>
+);
+
+export default Container;

@@ -1,12 +1,12 @@
 /* @flow */
-import React           from 'react';
-import StripeCheckout  from 'react-stripe-checkout';
-import logo            from '../../assets/images/logo.png';
+import React from "react";
+import StripeCheckout from "react-stripe-checkout";
+import logo from "../../assets/images/logo.png";
 
 type Props = {
   onStripePayment: Function,
   btnText: string
-}
+};
 
 const Stripe = ({ onStripePayment, btnText }: Props) => (
   <StripeCheckout

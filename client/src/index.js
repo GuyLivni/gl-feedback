@@ -1,9 +1,9 @@
-import React            from 'react';
-import { render }       from 'react-dom';
-import { injectGlobal } from 'styled-components';
-import Root             from './components/Root';
-import configureStore   from './redux/store';
-import 'semantic-ui-css/semantic.min.css';
+import React from "react";
+import { render } from "react-dom";
+import { injectGlobal } from "styled-components";
+import Root from "./components/Root";
+import configureStore from "./redux/store";
+import "semantic-ui-css/semantic.min.css";
 
 injectGlobal`
   body, html {
@@ -17,18 +17,12 @@ injectGlobal`
 `;
 
 const store = configureStore();
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById("root");
 
-render(
-  <Root store={store} />,
-  rootEl
-);
+render(<Root store={store} />, rootEl);
 
 if (module.hot) {
-  module.hot.accept('./components/Root', () => {
-    render(
-      <Root store={store} />,
-      rootEl
-    )
+  module.hot.accept("./components/Root", () => {
+    render(<Root store={store} />, rootEl);
   });
 }

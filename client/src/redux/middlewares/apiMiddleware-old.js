@@ -1,10 +1,9 @@
-import axios                        from 'axios';
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import axios from "axios";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-export const API = 'API';
+export const API = "API";
 
-const api = ({ dispatch, getState }) => next => async (action) => {
-
+const api = ({ dispatch, getState }) => next => async action => {
   if (action.type !== API) {
     return next(action);
   }
@@ -26,7 +25,7 @@ const api = ({ dispatch, getState }) => next => async (action) => {
       beforeHandler();
     }
 
-    const { data } = await axios({method, url, data: body, params});
+    const { data } = await axios({ method, url, data: body, params });
     dispatch(hideLoading());
     dispatch(success(data));
 
@@ -35,7 +34,7 @@ const api = ({ dispatch, getState }) => next => async (action) => {
     }
   } catch (error) {
     dispatch(hideLoading());
-    console.log("Error occurred: ", error)
+    console.log("Error occurred: ", error);
   }
 };
 

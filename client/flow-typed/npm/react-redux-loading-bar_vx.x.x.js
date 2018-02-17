@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'react-redux-loading-bar' {
+declare module "react-redux-loading-bar" {
   declare module.exports: any;
 }
 
@@ -22,46 +22,52 @@ declare module 'react-redux-loading-bar' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'react-redux-loading-bar/build/immutable' {
+declare module "react-redux-loading-bar/build/immutable" {
   declare module.exports: any;
 }
 
-declare module 'react-redux-loading-bar/build/index' {
+declare module "react-redux-loading-bar/build/index" {
   declare module.exports: any;
 }
 
-declare module 'react-redux-loading-bar/build/loading_bar_ducks' {
+declare module "react-redux-loading-bar/build/loading_bar_ducks" {
   declare module.exports: any;
 }
 
-declare module 'react-redux-loading-bar/build/loading_bar_middleware' {
+declare module "react-redux-loading-bar/build/loading_bar_middleware" {
   declare module.exports: any;
 }
 
-declare module 'react-redux-loading-bar/build/loading_bar_redux' {
+declare module "react-redux-loading-bar/build/loading_bar_redux" {
   declare module.exports: any;
 }
 
-declare module 'react-redux-loading-bar/build/loading_bar' {
+declare module "react-redux-loading-bar/build/loading_bar" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'react-redux-loading-bar/build/immutable.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/immutable'>;
+declare module "react-redux-loading-bar/build/immutable.js" {
+  declare module.exports: $Exports<"react-redux-loading-bar/build/immutable">;
 }
-declare module 'react-redux-loading-bar/build/index.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/index'>;
+declare module "react-redux-loading-bar/build/index.js" {
+  declare module.exports: $Exports<"react-redux-loading-bar/build/index">;
 }
-declare module 'react-redux-loading-bar/build/loading_bar_ducks.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/loading_bar_ducks'>;
+declare module "react-redux-loading-bar/build/loading_bar_ducks.js" {
+  declare module.exports: $Exports<
+    "react-redux-loading-bar/build/loading_bar_ducks"
+  >;
 }
-declare module 'react-redux-loading-bar/build/loading_bar_middleware.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/loading_bar_middleware'>;
+declare module "react-redux-loading-bar/build/loading_bar_middleware.js" {
+  declare module.exports: $Exports<
+    "react-redux-loading-bar/build/loading_bar_middleware"
+  >;
 }
-declare module 'react-redux-loading-bar/build/loading_bar_redux.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/loading_bar_redux'>;
+declare module "react-redux-loading-bar/build/loading_bar_redux.js" {
+  declare module.exports: $Exports<
+    "react-redux-loading-bar/build/loading_bar_redux"
+  >;
 }
-declare module 'react-redux-loading-bar/build/loading_bar.js' {
-  declare module.exports: $Exports<'react-redux-loading-bar/build/loading_bar'>;
+declare module "react-redux-loading-bar/build/loading_bar.js" {
+  declare module.exports: $Exports<"react-redux-loading-bar/build/loading_bar">;
 }

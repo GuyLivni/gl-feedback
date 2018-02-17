@@ -13,7 +13,7 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module 'react-stripe-checkout' {
+declare module "react-stripe-checkout" {
   declare module.exports: any;
 }
 
@@ -22,25 +22,25 @@ declare module 'react-stripe-checkout' {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module 'react-stripe-checkout/dist/main' {
+declare module "react-stripe-checkout/dist/main" {
   declare module.exports: any;
 }
 
-declare module 'react-stripe-checkout/spec' {
+declare module "react-stripe-checkout/spec" {
   declare module.exports: any;
 }
 
-declare module 'react-stripe-checkout/StripeCheckout' {
+declare module "react-stripe-checkout/StripeCheckout" {
   declare module.exports: any;
 }
 
 // Filename aliases
-declare module 'react-stripe-checkout/dist/main.js' {
-  declare module.exports: $Exports<'react-stripe-checkout/dist/main'>;
+declare module "react-stripe-checkout/dist/main.js" {
+  declare module.exports: $Exports<"react-stripe-checkout/dist/main">;
 }
-declare module 'react-stripe-checkout/spec.js' {
-  declare module.exports: $Exports<'react-stripe-checkout/spec'>;
+declare module "react-stripe-checkout/spec.js" {
+  declare module.exports: $Exports<"react-stripe-checkout/spec">;
 }
-declare module 'react-stripe-checkout/StripeCheckout.js' {
-  declare module.exports: $Exports<'react-stripe-checkout/StripeCheckout'>;
+declare module "react-stripe-checkout/StripeCheckout.js" {
+  declare module.exports: $Exports<"react-stripe-checkout/StripeCheckout">;
 }

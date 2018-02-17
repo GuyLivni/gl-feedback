@@ -1,10 +1,7 @@
-import reducer       from './authReducer';
-import authActions   from './authActions';
-import authTypes     from './authTypes';
+import reducer from "./authReducer";
+import * as authActions from "./authActions";
+import * as authTypes from "./authTypes";
 
-export {
-  authActions,
-  authTypes
-}
+export { authActions, authTypes };
 
 export default reducer;

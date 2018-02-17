@@ -1,11 +1,10 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunkMiddleware                                   from 'redux-thunk';
-import apiMiddleware                                     from '../middlewares/apiMiddleware';
-import * as reducers                                     from '../state';
+import { createStore, applyMiddleware, combineReducers } from "redux";
+import { apiMiddleware } from "../middlewares";
+import * as reducers from "../state";
 
 const configureStore = initialState => {
-  const rootReducer = combineReducers( reducers );
-  const middlewares = [thunkMiddleware, apiMiddleware];
+  const rootReducer = combineReducers(reducers);
+  const middlewares = [apiMiddleware];
 
   return createStore(
     rootReducer,

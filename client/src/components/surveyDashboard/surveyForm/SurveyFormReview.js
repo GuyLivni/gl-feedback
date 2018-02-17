@@ -1,7 +1,6 @@
-import React          from 'react';
-import {List, Button,
-        Header, Icon} from 'semantic-ui-react';
-import formFields     from './formFields';
+import React from "react";
+import { List, Button, Header, Icon } from "semantic-ui-react";
+import formFields from "./formFields";
 
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
   const fieldsList = formFields.map(({ name, label }) => {
@@ -16,20 +15,18 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
   });
 
   const renderHeader = () => (
-    <Header as='h3' key="header">
-      <Icon name='list' />
+    <Header as="h3" key="header">
+      <Icon name="list" />
       <Header.Content>
         Survey Content
-        <Header.Subheader>
-          Please confirm your entries
-        </Header.Subheader>
+        <Header.Subheader>Please confirm your entries</Header.Subheader>
       </Header.Content>
     </Header>
   );
 
   const renderButtons = () => (
     <Button.Group key="buttons">
-      <Button content="Back to editing" onClick={onCancel} negative/>
+      <Button content="Back to editing" onClick={onCancel} negative />
       <Button.Or />
       <Button
         primary
@@ -41,7 +38,9 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
 
   return [
     renderHeader(),
-    <List key="list" animated>{fieldsList}</List>,
+    <List key="list" animated>
+      {fieldsList}
+    </List>,
     renderButtons()
   ];
 };

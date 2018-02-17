@@ -1,5 +1,6 @@
-import types             from './authTypes';
-import { surveysTypes }  from '../surveys';
+import { authTypes } from "./";
+import { handle } from "../../middlewares/api";
+import { surveysTypes } from "../surveys";
 
 const initialState = {
   user: {},
@@ -7,24 +8,37 @@ const initialState = {
   hasFetchedUser: false
 };
 
-export default function (state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
-    case types.FETCH_USER:
-      return Object.assign({}, state, {
-        user: action.payload.user,
-        isAuthenticated: (action.payload.user && !!action.payload.user._id) || false,
-        hasFetchedUser: true
+    case authTypes.FETCH_USER:
+      return handle(state, action, {
+        success: () => {
+          return Object.assign({}, state, {
+            user: action.payload.user,
+            isAuthenticated:
+              (action.payload.user && !!action.payload.user._id) || false,
+            hasFetchedUser: true
+          });
+        }
       });
 
-    case types.SIGNOUT_USER:
-      return Object.assign({}, state, {
-        user: null,
-        isAuthenticated: false
+    case authTypes.SIGNOUT_USER:
+      return handle(state, action, {
+        success: () => {
+          return Object.assign({}, state, {
+            user: null,
+            isAuthenticated: false
+          });
+        }
       });
 
     case surveysTypes.ADD_SURVEY:
-      return Object.assign({}, state, {
-        user: action.payload.user
+      return handle(state, action, {
+        success: () => {
+          return Object.assign({}, state, {
+            user: action.payload.user
+          });
+        }
       });
 
     default:

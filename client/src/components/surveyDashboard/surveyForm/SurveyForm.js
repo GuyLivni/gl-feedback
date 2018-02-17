@@ -1,18 +1,18 @@
-import React, {Component}   from 'react';
-import {reduxForm, Field}   from 'redux-form';
-import {Link}               from 'react-router-dom';
-import {Button}             from 'semantic-ui-react';
-import styled               from 'styled-components';
-import TextInput            from '../../common/TextInput/index';
-import validateEmails       from '../../../utils/validateEmails';
-import formFields           from './formFields';
+import React, { Component } from "react";
+import { reduxForm, Field } from "redux-form";
+import { Link } from "react-router-dom";
+import { Button } from "semantic-ui-react";
+import styled from "styled-components";
+import TextInput from "../../common/TextInput/index";
+import validateEmails from "../../../utils/validateEmails";
+import formFields from "./formFields";
 
 const StyledLink = styled(Link)`
+  color: #fff;
+  &:hover {
     color: #fff;
-    &:hover {
-      color: #fff;
-    }
-  `;
+  }
+`;
 
 class SurveyForm extends Component {
   renderTextInput = ({ input, meta, info, label, title }) => (
@@ -35,7 +35,8 @@ class SurveyForm extends Component {
       title={name}
       label={label}
       info={info}
-      component={this.renderTextInput}/>
+      component={this.renderTextInput}
+    />
   );
 
   renderButtons = () => (
@@ -43,8 +44,8 @@ class SurveyForm extends Component {
       <Button negative>
         <StyledLink to="/surveys">Cancel</StyledLink>
       </Button>
-      <Button.Or/>
-      <Button type="submit" primary content="Done"/>
+      <Button.Or />
+      <Button type="submit" primary content="Done" />
     </Button.Group>
   );
 
@@ -61,10 +62,10 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.recipients = validateEmails(values.recipients || '');
-  errors.from = validateEmails(values.from || '');
+  errors.recipients = validateEmails(values.recipients || "");
+  errors.from = validateEmails(values.from || "");
 
-  formFields.forEach(({name, errorMessage}) => {
+  formFields.forEach(({ name, errorMessage }) => {
     if (!values[name]) {
       errors[name] = errorMessage;
     }
@@ -75,6 +76,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: 'surveyForm',
+  form: "surveyForm",
   destroyOnUnmount: false
 })(SurveyForm);

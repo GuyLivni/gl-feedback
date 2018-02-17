@@ -1,42 +1,42 @@
-import withAuthentication    from '../utils/withAuthentication';
-import Home                  from '../views/home';
-import Login                 from '../views/login';
-import Surveys               from '../views/surveys';
-import SurveyDashboard       from '../components/surveyDashboard';
-import SurveyCreate          from '../components/surveyDashboard/SurveyCreate';
-import NoMatch               from '../views/noMatch';
+import withAuthentication from "../utils/withAuthentication";
+import Home from "../views/home";
+import Login from "../views/login";
+import Surveys from "../views/surveys";
+import SurveyDashboard from "../components/surveyDashboard";
+import SurveyCreate from "../components/surveyDashboard/SurveyCreate";
+import NoMatch from "../views/noMatch";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     component: Home,
     exact: true
   },
   {
-    path: '/login',
+    path: "/login",
     component: Login,
     exact: true
   },
   {
-    path: '/surveys',
+    path: "/surveys",
     component: withAuthentication(Surveys),
     routes: [
       {
-        path: '/surveys',
+        path: "/surveys",
         component: SurveyDashboard,
         exact: true
       },
       {
-        path: '/surveys/new',
+        path: "/surveys/new",
         component: SurveyCreate,
         exact: true
-      },
+      }
     ]
   },
   {
-    path: '',
+    path: "",
     component: NoMatch
-  },
+  }
 ];
 
 export default routes;

@@ -1,10 +1,7 @@
-import reducer         from './surveysReducer';
-import surveysActions  from './surveysActions';
-import surveysTypes    from './surveysTypes';
+import reducer from "./surveysReducer";
+import * as surveysActions from "./surveysActions";
+import * as surveysTypes from "./surveysTypes";
 
-export {
-  surveysActions,
-  surveysTypes
-}
+export { surveysActions, surveysTypes };
 
 export default reducer;

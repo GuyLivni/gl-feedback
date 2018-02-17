@@ -1,59 +1,45 @@
-import types   from './surveysTypes';
-import { API } from '../../middlewares/apiMiddleware';
+import { surveysTypes } from "./";
 
-const addSurvey = (payload) => ({
-  type: types.ADD_SURVEY,
-  payload
-});
-
-const removeSurvey = (payload) => ({
-  type: types.REMOVE_SURVEY,
-  payload
-});
-
-const getSurvey = (payload) => ({
-  type: types.GET_SURVEYS,
-  payload
-});
-
-const sortSurvey = (payload) => ({
-  type: types.SORT_SURVEYS,
+const sortSurvey = payload => ({
+  type: surveysTypes.SORT_SURVEYS,
   payload
 });
 
 const submitSurvey = (values, history) => ({
-  type: API,
-  payload: {
-    url: '/api/surveys',
-    method: 'post',
-    body: values,
-    success: addSurvey,
-    afterHandler: () => history.push('/surveys')
+  type: surveysTypes.ADD_SURVEY,
+  request: {
+    method: "post",
+    url: "/api/surveys",
+    data: { values }
   }
 });
 
+// const submitSurvey = (values, history) => ({
+//   type: API,
+//   payload: {
+//     url: '/api/surveys',
+//     method: 'post',
+//     body: values,
+//     success: addSurvey,
+//     afterHandler: () => history.push('/surveys')
+//   }
+// });
+
 const deleteSurvey = id => ({
-  type: API,
-  payload: {
-    url: '/api/surveys',
-    method: 'delete',
-    params: { id },
-    success: removeSurvey
+  type: surveysTypes.REMOVE_SURVEY,
+  request: {
+    method: "delete",
+    url: "/api/surveys",
+    params: { id }
   }
 });
 
 const fetchSurveys = () => ({
-  type: API,
-  payload: {
-    url: '/api/surveys',
-    method: 'get',
-    success: getSurvey
+  type: surveysTypes.GET_SURVEYS,
+  request: {
+    method: "get",
+    url: "/api/surveys"
   }
 });
 
-export default {
-  submitSurvey,
-  deleteSurvey,
-  fetchSurveys,
-  sortSurvey
-}
+export { submitSurvey, deleteSurvey, fetchSurveys, sortSurvey };

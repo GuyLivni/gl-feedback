@@ -1,11 +1,11 @@
 /* @flow */
-import React  from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import Label  from './inputLabel';
-import Input  from './inputField';
-import Error  from './inputError';
-import Info   from './inputInfo';
+import Label from "./inputLabel";
+import Input from "./inputField";
+import Error from "./inputError";
+import Info from "./inputInfo";
 
 const StyledTextInput = styled.div`
   position: relative;
@@ -15,13 +15,13 @@ const StyledTextInput = styled.div`
 `;
 
 const InputTypes = {
-  text: 'text',
-  number: 'number',
-  email: 'email',
-  search: 'search',
-  tel: 'tel',
-  url: 'url',
-  password: 'password'
+  text: "text",
+  number: "number",
+  email: "email",
+  search: "search",
+  tel: "tel",
+  url: "url",
+  password: "password"
 };
 
 type Props = {
@@ -64,36 +64,44 @@ class TextInput extends React.Component<Props, State> {
     focus: () => {},
     onChange: () => {},
     disabled: false,
-    title: 'Input field',
+    title: "Input field",
     touched: false,
     required: false,
-    type: 'text'
+    type: "text"
   };
 
   state = {
     focused: false,
-    innerValue: '',
+    innerValue: "",
     innerTouched: false
   };
 
-  handleOnFocus = () => (
-    this.setState({ focused: true }, () =>
-      this.props.focus && this.props.focus(this.state.focused)
-    )
-  );
+  handleOnFocus = () =>
+    this.setState(
+      { focused: true },
+      () => this.props.focus && this.props.focus(this.state.focused)
+    );
 
-  handleOnBlur = () => (
-    this.setState({ focused: false, innerTouched: true })
-  );
+  handleOnBlur = () => this.setState({ focused: false, innerTouched: true });
 
-  handleOnChange = (e: SyntheticInputEvent<HTMLInputElement>) => (
-    this.setState({ innerValue: e.target.value }, () =>
-      this.props.onChange && this.props.onChange(this.state.innerValue, e)
-    )
-  );
+  handleOnChange = (e: SyntheticInputEvent<HTMLInputElement>) =>
+    this.setState(
+      { innerValue: e.target.value },
+      () => this.props.onChange && this.props.onChange(this.state.innerValue, e)
+    );
 
   render() {
-    const { label, error, info, value, disabled, title, touched, required, type } = this.props;
+    const {
+      label,
+      error,
+      info,
+      value,
+      disabled,
+      title,
+      touched,
+      required,
+      type
+    } = this.props;
     const { innerTouched, focused, innerValue } = this.state;
 
     return (
@@ -119,11 +127,11 @@ class TextInput extends React.Component<Props, State> {
           value={value || innerValue}
           type={type}
         />
-        {
-          ((touched || innerTouched) && error) ?
-            <Error error={this.props.error} /> :
-            info ? <Info info={this.props.info} /> : null
-        }
+        {(touched || innerTouched) && error ? (
+          <Error error={this.props.error} />
+        ) : info ? (
+          <Info info={this.props.info} />
+        ) : null}
       </StyledTextInput>
     );
   }
