@@ -10,27 +10,19 @@ const submitSurvey = (values, history) => ({
   request: {
     method: "post",
     url: "/api/surveys",
-    data: { values }
-  }
+    data: values
+  },
+  meta: {
+    onSuccess: () => history.push('/surveys')
+  },
 });
-
-// const submitSurvey = (values, history) => ({
-//   type: API,
-//   payload: {
-//     url: '/api/surveys',
-//     method: 'post',
-//     body: values,
-//     success: addSurvey,
-//     afterHandler: () => history.push('/surveys')
-//   }
-// });
 
 const deleteSurvey = id => ({
   type: surveysTypes.REMOVE_SURVEY,
   request: {
     method: "delete",
     url: "/api/surveys",
-    params: { id }
+    params: id
   }
 });
 
