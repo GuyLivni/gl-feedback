@@ -21,27 +21,23 @@ export default function(state = [], action) {
       });
 
     case surveysTypes.SORT_SURVEYS:
-      return handle(state, action, {
-        success: () => {
-          const sortKey = action.payload;
-          return [
-            ...state.sort((a, b) => {
-              if (sortKey === "no" || sortKey === "yes") {
-                return b[sortKey] - a[sortKey];
-              }
-              if (sortKey === "title") {
-                return a[sortKey] > b[sortKey]
-                  ? 1
-                  : a[sortKey] < b[sortKey] ? -1 : 0;
-              }
-              if (sortKey === "dateSent") {
-                return moment.utc(b[sortKey]).diff(moment.utc(a[sortKey]));
-              }
-              return 0;
-            })
-          ];
-        }
-      });
+      const sortKey = action.payload;
+      return [
+        ...state.sort((a, b) => {
+          if (sortKey === "no" || sortKey === "yes") {
+            return b[sortKey] - a[sortKey];
+          }
+          if (sortKey === "title") {
+            return a[sortKey] > b[sortKey]
+              ? 1
+              : a[sortKey] < b[sortKey] ? -1 : 0;
+          }
+          if (sortKey === "dateSent") {
+            return moment.utc(b[sortKey]).diff(moment.utc(a[sortKey]));
+          }
+          return 0;
+        })
+      ];
 
     default:
       return state;
