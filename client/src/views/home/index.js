@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Container } from "semantic-ui-react";
 import styled from "styled-components";
 import Header from "../../components/header/index";
@@ -10,12 +10,12 @@ const HomeContainer = styled(Container)`
 
 const Home = () => {
   return (
-    <div>
+    <Fragment>
       <Header />
       <HomeContainer>
         <h1>Collect Feedback From Your Users With Confidence</h1>
       </HomeContainer>
-    </div>
+    </Fragment>
   );
 };
 

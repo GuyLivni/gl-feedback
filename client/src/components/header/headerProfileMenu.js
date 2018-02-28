@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Dropdown, Icon } from "semantic-ui-react";
-import { StyledDropdown, Divider } from "./common";
+import { StyledDropdown, Divider } from "./commonStyles";
 import userImg from "../../assets/images/user.png";
 
 const ProfileContainer = styled.div`

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Header } from "semantic-ui-react";
 
 const LoginHeader = () => (
-  <div>
+  <Fragment>
     <Header textAlign="center" size="large">
       Welcome back.
     </Header>
@@ -10,7 +10,7 @@ const LoginHeader = () => (
       Sign in to access your personalized surveys. Get in touch with your users
       and collect valuable feedback on your products.
     </p>
-  </div>
+  </Fragment>
 );
 
 export default LoginHeader;

@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Dropdown, Icon } from "semantic-ui-react";
-import { StyledDropdown, Divider } from "./common";
+import { StyledDropdown, Divider } from "./commonStyles";
 import Stripe from "../stripe";
 
 const MainMenu = styled(Dropdown)`

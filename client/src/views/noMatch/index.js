@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Container } from "semantic-ui-react";
 import styled from "styled-components";
 import Header from "../../components/header/index";
@@ -36,13 +36,13 @@ const ErrorMessage = styled.h2`
 
 const NoMatch = () => {
   return (
-    <div>
+    <Fragment>
       <Header />
       <NoMatchContainer>
         <ErrorCode>404 </ErrorCode>
         <ErrorMessage>We couldn’t find this page. </ErrorMessage>
       </NoMatchContainer>
-    </div>
+    </Fragment>
   );
 };
 

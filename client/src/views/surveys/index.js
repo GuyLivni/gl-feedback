@@ -1,5 +1,5 @@
 /* @flow */
-import React from "react";
+import React, { Fragment } from "react";
 import RouteWithSubRoutes from "../../utils/routeWithSubRoutes";
 import Header from "../../components/header";
 
@@ -9,10 +9,10 @@ type Props = {
 
 const Surveys = ({ routes }: Props) => {
   return (
-    <div>
+    <Fragment>
       <Header />
       {routes.map(route => <RouteWithSubRoutes key={route.path} {...route} />)}
-    </div>
+    </Fragment>
   );
 };
 

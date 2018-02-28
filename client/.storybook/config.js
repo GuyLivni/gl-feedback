@@ -9,8 +9,7 @@ addDecorator(checkA11y);
 addDecorator(withKnobs);
 addDecorator(story => <Container story={story} />);
 
-const req = require.context('../src', true, /story\.js$/);
-
+const req = require.context('../src', true, /.story.js$/);
 function loadStories() {
   req.keys().forEach(req);
 }
