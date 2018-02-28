@@ -1,12 +1,36 @@
+import Loadable from "react-loadable";
+import LoadingBar from "../components/common/loadingBar";
 import withAuthentication from "../utils/withAuthentication";
-import asyncComponent from "../utils/asyncComponent";
 
-const AsyncHome = asyncComponent(() => import("../views/home"));
-const AsyncLogin = asyncComponent(() => import("../views/login"));
-const AsyncSurveys = asyncComponent(() => import("../views/surveys"));
-const AsyncSurveysDashboard = asyncComponent(() => import("../components/surveyDashboard"));
-const AsyncSurveyCreate = asyncComponent(() => import("../components/surveyDashboard/SurveyCreate"));
-const AsyncNoMatch = asyncComponent(() => import("../views/noMatch"));
+const AsyncHome = Loadable({
+  loader: () => import("../views/home"),
+  loading: LoadingBar
+});
+
+const AsyncLogin = Loadable({
+  loader: () => import("../views/login"),
+  loading: LoadingBar
+});
+
+const AsyncSurveys = Loadable({
+  loader: () => import("../views/surveys"),
+  loading: LoadingBar
+});
+
+const AsyncSurveysDashboard = Loadable({
+  loader: () => import("../components/surveyDashboard"),
+  loading: LoadingBar
+});
+
+const AsyncSurveyCreate = Loadable({
+  loader: () => import("../components/surveyDashboard/SurveyCreate"),
+  loading: LoadingBar
+});
+
+const AsyncNoMatch = Loadable({
+  loader: () => import("../views/noMatch"),
+  loading: LoadingBar
+});
 
 const routes = [
   {

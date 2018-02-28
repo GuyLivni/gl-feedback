@@ -3,20 +3,13 @@ import React, { Component } from "react";
 import { withRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import LoadingBar from "react-redux-loading-bar";
+import LoadingBar from "../common/loadingBar";
 import RouteWithSubRoutes from "../../utils/routeWithSubRoutes";
 import { authActions } from "../../redux/state/auth/index";
 import routes from "../../routes/index";
 
 const AppContainer = styled.div`
   height: 100%;
-`;
-
-const StyledLoadingBar = styled(LoadingBar)`
-  background: linear-gradient(to right, #9e7cc1, #8ecdea);
-  height: 4px;
-  position: fixed;
-  z-index: 10000000000;
 `;
 
 type Props = {
@@ -31,7 +24,7 @@ class App extends Component<Props> {
   render() {
     return (
       <AppContainer>
-        <StyledLoadingBar showFastActions />
+        <LoadingBar />
         <Switch>
           {routes.map(route => (
             <RouteWithSubRoutes key={route.path} {...route} />
