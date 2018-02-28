@@ -1,41 +1,43 @@
 import withAuthentication from "../utils/withAuthentication";
-import Home from "../views/home";
-import Login from "../views/login";
-import Surveys from "../views/surveys";
-import SurveyDashboard from "../components/surveyDashboard";
-import SurveyCreate from "../components/surveyDashboard/SurveyCreate";
-import NoMatch from "../views/noMatch";
+import asyncComponent from "../utils/asyncComponent";
+
+const AsyncHome = asyncComponent(() => import("../views/home"));
+const AsyncLogin = asyncComponent(() => import("../views/login"));
+const AsyncSurveys = asyncComponent(() => import("../views/surveys"));
+const AsyncSurveysDashboard = asyncComponent(() => import("../components/surveyDashboard"));
+const AsyncSurveyCreate = asyncComponent(() => import("../components/surveyDashboard/SurveyCreate"));
+const AsyncNoMatch = asyncComponent(() => import("../views/noMatch"));
 
 const routes = [
   {
     path: "/",
-    component: Home,
+    component: AsyncHome,
     exact: true
   },
   {
     path: "/login",
-    component: Login,
+    component: AsyncLogin,
     exact: true
   },
   {
     path: "/surveys",
-    component: withAuthentication(Surveys),
+    component: withAuthentication(AsyncSurveys),
     routes: [
       {
         path: "/surveys",
-        component: SurveyDashboard,
+        component: AsyncSurveysDashboard,
         exact: true
       },
       {
         path: "/surveys/new",
-        component: SurveyCreate,
+        component: AsyncSurveyCreate,
         exact: true
       }
     ]
   },
   {
     path: "",
-    component: NoMatch
+    component: AsyncNoMatch
   }
 ];
 

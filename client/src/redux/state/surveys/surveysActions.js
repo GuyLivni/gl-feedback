@@ -13,8 +13,8 @@ const submitSurvey = (values, history) => ({
     data: values
   },
   meta: {
-    onSuccess: () => history.push('/surveys')
-  },
+    onSuccess: () => history.push("/surveys")
+  }
 });
 
 const deleteSurvey = id => ({
