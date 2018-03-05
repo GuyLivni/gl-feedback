@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { withRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { bindActionCreators } from "redux";
 import LoadingBar from "../common/loadingBar";
 import RouteWithSubRoutes from "../../utils/routeWithSubRoutes";
 import { authActions } from "../../redux/state/auth/index";
@@ -13,12 +14,14 @@ const AppContainer = styled.div`
 `;
 
 type Props = {
-  fetchUser: Function
+  actions: {
+    fetchUser: Function
+  }
 };
 
 class App extends Component<Props> {
   componentDidMount() {
-    this.props.fetchUser();
+    this.props.actions.fetchUser();
   }
 
   render() {
@@ -35,8 +38,10 @@ class App extends Component<Props> {
   }
 }
 
-const mapDispatchToProps = {
-  fetchUser: authActions.fetchUser
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    ...authActions
+  }, dispatch)
+});
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

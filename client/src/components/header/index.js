@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { bindActionCreators } from "redux";
 import { authActions } from "../../redux/state/auth";
 
 import HeaderMenu from "./headerMenu";
@@ -28,16 +29,18 @@ const HeaderContainer = styled.nav`
 `;
 
 type Props = {
-  logoutUser: Function,
-  handleToken: Function,
+  actions: {
+    logoutUser: Function,
+    handleToken: Function,
+  },
   user: User,
   isAuthenticated: boolean
 };
 
 class Header extends Component<Props> {
-  logOutUser = () => this.props.logoutUser();
+  logOutUser = () => this.props.actions.logoutUser();
 
-  handlePayment = (token: Object) => this.props.handleToken(token);
+  handlePayment = (token: Object) => this.props.actions.handleToken(token);
 
   render() {
     const { user, isAuthenticated } = this.props;
@@ -61,9 +64,10 @@ const mapStateToProps = ({ auth }) => ({
   isAuthenticated: auth.isAuthenticated
 });
 
-const mapDispatchToProps = {
-  logoutUser: authActions.logoutUser,
-  handleToken: authActions.handleToken
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    ...authActions
+  }, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

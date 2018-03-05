@@ -12,17 +12,17 @@ const AsyncLogin = Loadable({
 });
 
 const AsyncSurveys = Loadable({
-  loader: () => import("../views/surveys"),
+  loader: () => import("../views/survey"),
   loading: LoadingBar
 });
 
 const AsyncSurveysDashboard = Loadable({
-  loader: () => import("../components/surveyDashboard"),
+  loader: () => import("../components/survey"),
   loading: LoadingBar
 });
 
 const AsyncSurveyCreate = Loadable({
-  loader: () => import("../components/surveyDashboard/SurveyCreate"),
+  loader: () => import("../components/survey/SurveyCreate"),
   loading: LoadingBar
 });
 

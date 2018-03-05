@@ -4,9 +4,10 @@ import { reduxForm } from "redux-form";
 import { Container } from "semantic-ui-react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { bindActionCreators } from "redux";
 
 import { surveysActions } from "../../redux/state/surveys";
-import SurveyForm from "./surveyForm/SurveyForm";
+import SurveyForm from "./surveyForm";
 import SurveyFormReview from "./surveyForm/SurveyFormReview";
 
 const SurveyCreateContainer = styled(Container)`
@@ -14,7 +15,9 @@ const SurveyCreateContainer = styled(Container)`
 `;
 
 type Props = {
-  submitSurvey: Function,
+  actions: {
+    submitSurvey: Function,
+  },
   history: Object,
   formValues: Object
 };
@@ -27,7 +30,7 @@ class SurveyCreate extends Component<Props, State> {
   state = { showFormReview: false };
 
   handleSubmit = (formValues: Object) =>
-    this.props.submitSurvey(formValues, this.props.history);
+    this.props.actions.submitSurvey(formValues, this.props.history);
 
   renderContent() {
     if (this.state.showFormReview) {
@@ -57,9 +60,11 @@ const mapStateToProps = ({ form }) => ({
   formValues: form
 });
 
-const mapDispatchToProps = {
-  submitSurvey: surveysActions.submitSurvey
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    ...surveysActions
+  }, dispatch)
+});
 
 export default reduxForm({
   form: "surveyForm"

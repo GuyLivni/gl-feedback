@@ -2,8 +2,9 @@
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import styled from "styled-components";
-import SurveyList from "./surveyList/SurveyList";
+import SurveyList from "./surveyList";
 import SurveyMenu from "./surveyMenu";
 import { surveysActions } from "../../redux/state/surveys";
 
@@ -12,20 +13,22 @@ const SurveysContainer = styled(Container)`
 `;
 
 type Props = {
-  fetchSurveys: Function,
-  deleteSurvey: Function,
-  sortSurvey: Function,
+  actions: {
+    fetchSurveys: Function,
+    deleteSurvey: Function,
+    sortSurvey: Function,
+  },
   surveys: Array<Object>
 };
 
-class SurveyDashboard extends Component<Props> {
+class Survey extends Component<Props> {
   componentDidMount() {
-    this.props.fetchSurveys();
+    this.props.actions.fetchSurveys();
   }
 
-  handleDelete = (id: string) => this.props.deleteSurvey(id);
+  handleDelete = (id: string) => this.props.actions.deleteSurvey(id);
 
-  handleSort = (sortBy: string) => this.props.sortSurvey(sortBy);
+  handleSort = (sortBy: string) => this.props.actions.sortSurvey(sortBy);
 
   render() {
     return (
@@ -44,10 +47,10 @@ const mapStateToProps = ({ surveys }) => ({
   surveys
 });
 
-const mapDispatchToProps = {
-  fetchSurveys: surveysActions.fetchSurveys,
-  deleteSurvey: surveysActions.deleteSurvey,
-  sortSurvey: surveysActions.sortSurvey
-};
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({
+    ...surveysActions
+  }, dispatch)
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(SurveyDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);
