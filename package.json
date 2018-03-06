@@ -13,17 +13,8 @@
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "webhook": "./sendgrid_webhook.sh",
-    "precommit": "flow check --prefix client && lint-staged --prefix client"
+    "webhook": "./sendgrid_webhook.sh"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix --cache",
-      "git add",
-      "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests"
-    ]
-  },
-  "pre-commit": "precommit",
   "author": "",
   "license": "ISC",
   "dependencies": {

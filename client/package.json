@@ -17,9 +17,18 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./ --fix --cache",
     "flow": "flow check",
+    "precommit": "flow check && lint-staged",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --cache",
+      "git add",
+      "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests"
+    ]
+  },
+  "pre-commit": "precommit",
   "dependencies": {
     "axios": "^0.18.0",
     "deline": "^1.0.4",
