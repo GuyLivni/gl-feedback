@@ -39,9 +39,12 @@ class App extends Component<Props> {
 }
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    ...authActions
-  }, dispatch)
+  actions: bindActionCreators(
+    {
+      ...authActions
+    },
+    dispatch
+  )
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

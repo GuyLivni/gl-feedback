@@ -10,14 +10,16 @@
       "target": "http://localhost:5000"
     }
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix --cache",
-      "git add",
-      "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests"
-    ]
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./ --fix --cache",
+    "flow": "flow check",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
-  "pre-commit": "precommit",
   "dependencies": {
     "axios": "^0.18.0",
     "deline": "^1.0.4",
@@ -37,17 +39,6 @@
     "semantic-ui-css": "2.2.12",
     "semantic-ui-react": "0.78.2",
     "styled-components": "^3.1.6"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint ./ --fix --cache",
-    "flow": "flow check",
-    "precommit": "flow check && lint-staged",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^3.3.13",

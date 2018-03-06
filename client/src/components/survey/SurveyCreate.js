@@ -16,7 +16,7 @@ const SurveyCreateContainer = styled(Container)`
 
 type Props = {
   actions: {
-    submitSurvey: Function,
+    submitSurvey: Function
   },
   history: Object,
   formValues: Object
@@ -61,9 +61,12 @@ const mapStateToProps = ({ form }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    ...surveysActions
-  }, dispatch)
+  actions: bindActionCreators(
+    {
+      ...surveysActions
+    },
+    dispatch
+  )
 });
 
 export default reduxForm({

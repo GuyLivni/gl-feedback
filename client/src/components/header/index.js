@@ -31,7 +31,7 @@ const HeaderContainer = styled.nav`
 type Props = {
   actions: {
     logoutUser: Function,
-    handleToken: Function,
+    handleToken: Function
   },
   user: User,
   isAuthenticated: boolean
@@ -65,9 +65,12 @@ const mapStateToProps = ({ auth }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    ...authActions
-  }, dispatch)
+  actions: bindActionCreators(
+    {
+      ...authActions
+    },
+    dispatch
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

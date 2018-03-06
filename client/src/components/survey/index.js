@@ -16,7 +16,7 @@ type Props = {
   actions: {
     fetchSurveys: Function,
     deleteSurvey: Function,
-    sortSurvey: Function,
+    sortSurvey: Function
   },
   surveys: Array<Object>
 };
@@ -48,9 +48,12 @@ const mapStateToProps = ({ surveys }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({
-    ...surveysActions
-  }, dispatch)
+  actions: bindActionCreators(
+    {
+      ...surveysActions
+    },
+    dispatch
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Survey);
